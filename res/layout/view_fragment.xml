@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:weightSum="3">
+
+    <fragment
+        android:id="@+id/tutview_fragment"
+        android:name="at.mikemitterer.tutorial.fragments.ViewerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" 
+        android:layout_weight="2"/>
+    
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/colorview_fragment"
+        android:name="at.mikemitterer.tutorial.fragments.ColorFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" 
+        android:layout_weight="1"/>
+
+</LinearLayout>

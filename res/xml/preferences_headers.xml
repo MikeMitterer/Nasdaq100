@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <header
+        android:fragment="at.mikemitterer.tutorial.fragments.PrefsUserFragment"
+        android:summary="Home Field Advantage user settings"
+        android:title="User Settings" />
+
+    <header
+        android:fragment="at.mikemitterer.tutorial.fragments.PrefsLangFragment"
+        android:summary="Language specific settings"
+        android:title="Language Settings" />
+    
+</preference-headers> 

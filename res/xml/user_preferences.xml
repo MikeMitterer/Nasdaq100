@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="User Settings" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="vibratePreference"
+            android:summary="Vibrate on adds and updates"
+            android:title="Vibrate" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="soundPreference"
+            android:summary="Play sound on adds and updates"
+            android:title="Sound" />
+    </PreferenceCategory>
+</PreferenceScreen>

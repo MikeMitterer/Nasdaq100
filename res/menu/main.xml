@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/show_stockinfo"
+        android:enabled="true"
+        android:icon="@drawable/menu_show_stockinfo"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_show_stockinfo"
+        android:visible="true">
+</item>
+</menu>

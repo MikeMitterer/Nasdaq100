@@ -1,0 +1,795 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<record>
+	<symbol>AAPL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Apple</url_de>
+	<name>Apple</name>
+	<weighting>12,10</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ADBE</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Adobe_Systems</url_de>
+	<name>Adobe Systems</name>
+	<weighting>0,62</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ADP</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Automatic_Data_Processing</url_de>
+	<name>Automatic Data Processing</name>
+	<weighting>1,03</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ADSK</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Autodesk</url_de>
+	<name>Autodesk</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>AKAM</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Akamai</url_de>
+	<name>Akamai</name>
+	<weighting>0,23</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ALTR</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Altera</url_de>
+	<name>Altera</name>
+	<weighting>0,58</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ALXN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Alexion_Pharmaceuticals</url_de>
+	<name>Alexion Pharmaceuticals</name>
+	<weighting>0,34</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>AMAT</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Applied_Materials</url_de>
+	<name>Applied Materials</name>
+	<weighting>0,67</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>AMGN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Amgen</url_de>
+	<name>Amgen</name>
+	<weighting>2,12</weighting>
+	<imageavailable>false</imageavailable>
+</record>
+<record>
+	<symbol>AMZN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Amazon.com</url_de>
+	<name>Amazon.com</name>
+	<weighting>3,60</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>APOL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Apollo_Group</url_de>
+	<name>Apollo Group</name>
+	<weighting>0,24</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ATVI</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Activision_Blizzard</url_de>
+	<name>Activision Blizzard</name>
+	<weighting>0,52</weighting>
+	<imageavailable>false</imageavailable>
+</record>
+<record>
+	<symbol>BBBY</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Bed_Bath_%26_Beyond</url_de>
+	<name>Bed Bath &amp; Beyond</name>
+	<weighting>0,57</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>BIDU</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Baidu</url_de>
+	<name>Baidu</name>
+	<weighting>1,48</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>BIIB</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Biogen_Idec</url_de>
+	<name>Biogen Idec</name>
+	<weighting>1,01</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>BMC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/BMC_Software</url_de>
+	<name>BMC Software</name>
+	<weighting>0,38</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>BRCM</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Broadcom</url_de>
+	<name>Broadcom</name>
+	<weighting>0,63</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/CA,_Inc.</url_de>
+	<name>CA, Inc.</name>
+	<weighting>0,45</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CELG</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Celgene</url_de>
+	<name>Celgene</name>
+	<weighting>1,09</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CEPH</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Cephalon_(Unternehmen)</url_de>
+	<name>Cephalon</name>
+	<weighting>0,24</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CERN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Cerner_Corporation</url_de>
+	<name>Cerner Corporation</name>
+	<weighting>0,40</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CHKP</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Check_Point</url_de>
+	<name>Check Point</name>
+	<weighting>0,46</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CHRW</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/C._H._Robinson_Worldwide</url_de>
+	<name>C. H. Robinson Worldwide</name>
+	<weighting>0,51</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CMCSA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Comcast</url_de>
+	<name>Comcast</name>
+	<weighting>2,06</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>COST</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Costco_Wholesale</url_de>
+	<name>Costco Wholesale</name>
+	<weighting>1,38</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CSCO</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Cisco</url_de>
+	<name>Cisco</name>
+	<weighting>3,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CTRP</symbol>
+	<url_en>http://en.wikipedia.org/wiki/Ctrip</url_en>
+	<url_de></url_de>
+	<name>Ctrip</name>
+	<weighting>0,25</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CTSH</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Cognizant_Technology_Solutions</url_de>
+	<name>Cognizant Technology Solutions</name>
+	<weighting>0,87</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>CTXS</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Citrix_Systems</url_de>
+	<name>Citrix Systems</name>
+	<weighting>0,59</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>DELL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Dell</url_de>
+	<name>Dell</name>
+	<weighting>1,23</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>DLTR</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Dollar_Tree</url_en>
+	<name>Dollar Tree</name>
+	<weighting>0,32</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>DTV</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/DirecTV</url_de>
+	<name>DirecTV</name>
+	<weighting>1,52</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>EBAY</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/EBay</url_de>
+	<name>eBay</name>
+	<weighting>1,63</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ERTS</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Electronic_Arts</url_de>
+	<name>Electronic Arts</name>
+	<weighting>0,31</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ESRX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Express_Scripts</url_de>
+	<name>Express Scripts</name>
+	<weighting>1,11</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>EXPD</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Expeditors_International_of_Washington</url_de>
+	<name>Expeditors International of Washington</name>
+	<weighting>0,42</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>EXPE</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Expedia</url_de>
+	<name>Expedia</name>
+	<weighting>0,28</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FAST</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Fastenal</url_en>
+	<name>Fastenal</name>
+	<weighting>0,41</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FFIV</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/F5_Networks</url_en>
+	<name>F5 Networks</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FISV</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Fiserv</url_de>
+	<name>Fiserv</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FLEX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Flextronics</url_de>
+	<name>Flextronics</name>
+	<weighting>0,19</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FLIR</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/FLIR_Systems</url_en>
+	<name>FLIR Systems</name>
+	<weighting>0,21</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>FSLR</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/First_Solar</url_de>
+	<name>First Solar</name>
+	<weighting>0,44</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>GILD</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Gilead_Sciences</url_de>
+	<name>Gilead Sciences</name>
+	<weighting>1,27</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>GMCR</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Green_Mountain_Coffee_Roasters</url_en>
+	<name>Green Mountain Coffee Roasters</name>
+	<weighting>0,53</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>GOOG</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Google_Inc.</url_de>
+	<name>Google</name>
+	<weighting>5,00</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>GRMN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Garmin</url_de>
+	<name>Garmin</name>
+	<weighting>0,27</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>HSIC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Henry_Schein</url_de>
+	<name>Henry Schein</name>
+	<weighting>0,26</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ILMN</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Illumina_(company)</url_en>
+	<name>Illumina</name>
+	<weighting>0,36</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>INFY</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Infosys</url_de>
+	<name>Infosys</name>
+	<weighting>0,26</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>INTC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Intel</url_de>
+	<name>Intel</name>
+	<weighting>4,58</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>INTU</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Intuit</url_de>
+	<name>Intuit</name>
+	<weighting>0,61</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ISRG</symbol>
+	<url_de></url_de>	
+	<url_en>http://en.wikipedia.org/wiki/Intuitive_Surgical</url_en>
+	<name>Intuitive Surgical</name>
+	<weighting>0,57</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>JOYG</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Joy_Global</url_en>
+	<name>Joy Global</name>
+	<weighting>0,39</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>KLAC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/KLA-Tencor</url_de>
+	<name>KLA-Tencor</name>
+	<weighting>0,27</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>LIFE</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Life_Technologies</url_de>
+	<name>Life Technologies</name>
+	<weighting>0,36</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>LINTA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Liberty_Media</url_de>
+	<name>Liberty Media</name>
+	<weighting>0,37</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>LLTC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Linear_Technology</url_de>
+	<name>Linear Technology</name>
+	<weighting>0,29</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>LRCX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Lam_Research</url_de>
+	<name>Lam Research</name>
+	<weighting>0,21</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MAT</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Mattel</url_de>
+	<name>Mattel</name>
+	<weighting>0,37</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MCHP</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Microchip_Technology</url_de>
+	<name>Microchip Technology</name>
+	<weighting>0,28</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MRVL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Marvell_Technology_Group</url_de>
+	<name>Marvell Technology Group</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MSFT</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Microsoft</url_de>
+	<name>Microsoft</name>
+	<weighting>8,55</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MU</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Micron_Technology</url_de>
+	<name>Micron Technology</name>
+	<weighting>0,29</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MXIM</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Maxim_Integrated_Products</url_de>
+	<name>Maxim Integrated Products</name>
+	<weighting>0,29</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>MYL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Mylan_Laboratories</url_de>
+	<name>Mylan Laboratories</name>
+	<weighting>0,42</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>NFLX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Netflix</url_de>
+	<name>Netflix</name>
+	<weighting>0,54</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>NIHD</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/NII_Holdings</url_en>
+	<name>NII Holdings</name>
+	<weighting>0,28</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>NTAP</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/NetApp</url_de>
+	<name>NetApp</name>
+	<weighting>0,76</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>NVDA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Nvidia</url_de>
+	<name>Nvidia</name>
+	<weighting>0,37</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>NWSA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/News_Corporation</url_de>
+	<name>News Corporation</name>
+	<weighting>1,26</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ORCL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Oracle</url_de>
+	<name>Oracle</name>
+	<weighting>6,47</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ORLY</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/O'Reilly_Auto_Parts</url_en>
+	<name>O'Reilly Automotive</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>PAYX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Paychex</url_de>
+	<name>Paychex</name>
+	<weighting>0,43</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>PCAR</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Paccar</url_de>
+	<name>Paccar</name>
+	<weighting>0,73</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>PCLN</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Priceline.com</url_en>
+	<name>Priceline.com</name>
+	<weighting>0,99</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>QCOM</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Qualcomm</url_de>
+	<name>Qualcomm</name>
+	<weighting>3,70</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>QGEN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Qiagen</url_de>
+	<name>Qiagen</name>
+	<weighting>0,17</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>RIMM</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Research_In_Motion</url_de>
+	<name>Research In Motion</name>
+	<weighting>0,59</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>ROST</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Ross_Stores</url_en>
+	<name>Ross Stores</name>
+	<weighting>0,37</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SBUX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Starbucks</url_de>
+	<name>Starbucks</name>
+	<weighting>1,15</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SHLD</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Sears</url_de>
+	<name>Sears</name>
+	<weighting>0,30</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SIAL</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Sigma-Aldrich</url_de>
+	<name>Sigma-Aldrich</name>
+	<weighting>0,35</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SNDK</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/SanDisk</url_de>
+	<name>SanDisk</name>
+	<weighting>0,39</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SPLS</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Staples</url_de>
+	<name>Staples</name>
+	<weighting>0,44</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SRCL</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Stericycle</url_en>
+	<name>Stericycle</name>
+	<weighting>0,30</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>STX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Seagate_Technology</url_de>
+	<name>Seagate Technology</name>
+	<weighting>0,27</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>SYMC</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Symantec</url_de>
+	<name>Symantec</name>
+	<weighting>0,58</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>TEVA</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Teva_Pharmaceutical_Industries</url_de>
+	<name>Teva Pharmaceutical Industries</name>
+	<weighting>1,32</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>URBN</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Urban_Outfitters</url_en>
+	<name>Urban Outfitters</name>
+	<weighting>0,18</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>VMED</symbol>
+	<url_en></url_en>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Virgin_Media</url_en>
+	<name>Virgin Media</name>
+	<weighting>0,37</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>VOD</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Vodafone</url_de>
+	<name>Vodafone</name>
+	<weighting>0,90</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>VRSN</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/VeriSign</url_de>
+	<name>VeriSign</name>
+	<weighting>0,22</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>VRTX</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Vertex_Pharmaceuticals</url_en>
+	<name>Vertex Pharmaceuticals</name>
+	<weighting>0,42</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>WCRX</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Warner_Chilcott</url_en>
+	<name>Warner Chilcott</name>
+	<weighting>0,24</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>WYNN</symbol>
+	<url_de></url_de>
+	<url_en>http://en.wikipedia.org/wiki/Wynn_Resorts</url_en>
+	<name>Wynn Resorts</name>
+	<weighting>0,70</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>XLNX</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Xilinx</url_de>
+	<name>Xilinx</name>
+	<weighting>0,38</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>XRAY</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Dentsply_International</url_de>
+	<name>Dentsply International</name>
+	<weighting>0,21</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+<record>
+	<symbol>YHOO</symbol>
+	<url_en></url_en>
+	<url_de>http://de.wikipedia.org/wiki/Yahoo!</url_de>
+	<name>Yahoo!</name>
+	<weighting>0,76</weighting>
+	<imageavailable>true</imageavailable>
+</record>
+

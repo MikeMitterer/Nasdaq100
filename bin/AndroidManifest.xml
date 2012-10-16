@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="at.mikemitterer.tutorial.fragments"
+    android:installLocation="auto"
+    android:versionCode="3"
+    android:versionName="1.2.22" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="11" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- für Error-Report -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Sherlock" >
+        <provider
+            android:name="at.mikemitterer.tutorial.fragments.provider.DataProvider"
+            android:authorities="at.mikemitterer.tutorial.fragments.provider.dataprovider" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ViewerActivity"
+            android:label="Tutorial Viewer" />
+        
+        <activity
+            android:name=".PrefsActivityForFragments"
+            android:label="Preferences" >
+        </activity>
+        
+        <activity
+            android:name=".PrefsActivitySimple"
+            android:label="Preferences" >
+        </activity>
+        
+    </application>
+
+</manifest>
