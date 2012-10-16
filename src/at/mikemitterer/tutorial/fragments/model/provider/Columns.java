@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.provider;
+package at.mikemitterer.tutorial.fragments.model.provider;
 
 import android.provider.BaseColumns;
 

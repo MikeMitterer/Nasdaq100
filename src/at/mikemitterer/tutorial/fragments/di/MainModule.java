@@ -7,25 +7,23 @@ import org.slf4j.LoggerFactory;
 
 import android.app.Application;
 import android.os.Build;
-import android.preference.PreferenceActivity;
 import android.support.v4.widget.CursorAdapter;
-import at.mikemitterer.tutorial.fragments.ImageListAdapter;
-import at.mikemitterer.tutorial.fragments.PrefsActivityForFragments;
-import at.mikemitterer.tutorial.fragments.PrefsActivitySimple;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.ZoomFragmentFactory;
-import at.mikemitterer.tutorial.fragments.ZoomFragmentFactoryImpl;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
 import at.mikemitterer.tutorial.fragments.di.annotation.SDKVersion;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLImageServer;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayout;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayoutFactory;
-import at.mikemitterer.tutorial.fragments.view.impl.ToggleLinearLayoutAnimated;
-import at.mikemitterer.tutorial.fragments.view.impl.ToggleLinearLayoutSimple;
+import at.mikemitterer.tutorial.fragments.view.bignames.ImageListAdapter;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutAnimated;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFactory;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutSimple;
+import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactory;
+import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactoryImpl;
+import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
+import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactoryImpl;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
@@ -56,7 +54,7 @@ public class MainModule extends AbstractModule {
 
 		final int sdk = Integer.valueOf(Build.VERSION.SDK_INT);
 
-		// Static incection - schould be avoided
+		// Static injection - should be avoided
 		//requestStaticInjection(UpdateDBFromRESTTask.class);
 
 		// CONST Values
@@ -160,31 +158,6 @@ public class MainModule extends AbstractModule {
 				.build();
 
 		return config;
-	}
-
-	public interface PrefsFactory {
-		Class<PreferenceActivity> get();
-	}
-
-	static class PrefsFactoryImpl implements PrefsFactory {
-
-		private final int	sdk;
-
-		@Inject
-		public PrefsFactoryImpl(@SDKVersion final int sdk) {
-			this.sdk = sdk;
-		}
-
-		@Override
-		public Class get() {
-			if (sdk < 11) {
-				return PrefsActivitySimple.class;
-			}
-			else {
-				return PrefsActivityForFragments.class;
-			}
-		}
-
 	}
 
 }

@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.view;
+package at.mikemitterer.tutorial.fragments.view.linearlayout;
 
 import android.widget.LinearLayout;
 

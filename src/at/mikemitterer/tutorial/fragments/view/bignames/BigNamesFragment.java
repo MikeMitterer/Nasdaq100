@@ -28,7 +28,7 @@
  * 
  * <ORGANIZATION> = Mamlambo
  */
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.bignames;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,15 +43,15 @@ import android.support.v4.widget.CursorAdapter;
 import android.view.View;
 import android.widget.ListView;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
-import at.mikemitterer.tutorial.fragments.provider.DataContract;
+import at.mikemitterer.tutorial.fragments.model.provider.DataContract;
 
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockListFragment;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class BigNamesListFragment extends RoboSherlockListFragment implements LoaderCallbacks<Cursor> {
-	private static Logger			logger		= LoggerFactory.getLogger(BigNamesListFragment.class.getSimpleName());
+public class BigNamesFragment extends RoboSherlockListFragment implements LoaderCallbacks<Cursor> {
+	private static Logger			logger		= LoggerFactory.getLogger(BigNamesFragment.class.getSimpleName());
 
 	private static final int		LIST_LOADER	= 0x01;
 

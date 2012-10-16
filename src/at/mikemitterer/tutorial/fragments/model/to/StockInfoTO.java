@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.to;
+package at.mikemitterer.tutorial.fragments.model.to;
 
 public class StockInfoTO {
 	public String	symbol		= "";

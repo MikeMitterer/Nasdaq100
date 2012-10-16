@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.zoomfragment;
 
 import android.os.Bundle;
 

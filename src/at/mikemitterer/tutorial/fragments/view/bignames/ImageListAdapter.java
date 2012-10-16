@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.bignames;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLImageServer;
-import at.mikemitterer.tutorial.fragments.provider.Columns;
+import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;

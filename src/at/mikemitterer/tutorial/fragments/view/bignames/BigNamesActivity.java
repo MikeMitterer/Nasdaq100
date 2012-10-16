@@ -28,7 +28,7 @@
  * 
  * <ORGANIZATION> = Mamlambo
  */
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.bignames;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +39,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import at.mikemitterer.tutorial.fragments.di.MainModule.PrefsFactory;
-import at.mikemitterer.tutorial.fragments.provider.Columns;
+import at.mikemitterer.tutorial.fragments.R;
+import at.mikemitterer.tutorial.fragments.model.provider.Columns;
+import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
+import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
+import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactory;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -49,10 +52,10 @@ import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmen
 import com.google.inject.Inject;
 
 @ContentView(R.layout.main_fragment)
-public class MainActivity extends RoboSherlockFragmentActivity implements BigNamesListFragment.OnTutSelectedListener {
+public class BigNamesActivity extends RoboSherlockFragmentActivity implements BigNamesFragment.OnTutSelectedListener {
 
 	@SuppressWarnings("unused")
-	private static Logger	logger	= LoggerFactory.getLogger(MainActivity.class.getSimpleName());
+	private static Logger	logger	= LoggerFactory.getLogger(BigNamesActivity.class.getSimpleName());
 
 	//	@Override
 	//	public void onCreate(final Bundle savedInstanceState) {
@@ -70,7 +73,7 @@ public class MainActivity extends RoboSherlockFragmentActivity implements BigNam
 
 	@Override
 	public void onTutSelected(final Cursor cursor) {
-		final ViewerFragment viewer = (ViewerFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
 		final String symbol = cursor.getString(Columns.StockInfo.INDEX.SYMBOL.ordinal());
 		final String url_fallback = cursor.getString(Columns.StockInfo.INDEX.URL_EN.ordinal());
 
@@ -85,7 +88,7 @@ public class MainActivity extends RoboSherlockFragmentActivity implements BigNam
 		bundle.putString("symbol", symbol);
 
 		if (viewer == null || !viewer.isInLayout()) {
-			final Intent showContent = new Intent(getApplicationContext(), ViewerActivity.class);
+			final Intent showContent = new Intent(getApplicationContext(), DetailsActivity.class);
 
 			showContent.putExtras(bundle);
 			startActivity(showContent);

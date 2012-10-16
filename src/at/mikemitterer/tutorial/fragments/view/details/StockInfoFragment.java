@@ -28,7 +28,7 @@
  * 
  * <ORGANIZATION> = Mamlambo
  */
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.details;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,16 +44,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
-import at.mikemitterer.tutorial.fragments.util.ThreadUtil;
+import at.mikemitterer.tutorial.fragments.model.util.ThreadUtil;
+import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragment;
+import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
 
 import com.google.inject.Inject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 
-public class ColorFragment extends RoboFragment {
-	private static Logger	logger	= LoggerFactory.getLogger(ColorFragment.class.getSimpleName());
+public class StockInfoFragment extends RoboFragment {
+	private static Logger	logger	= LoggerFactory.getLogger(StockInfoFragment.class.getSimpleName());
 	private ImageLoader		imageloader;
 
 	public interface OnShowMoreListener {

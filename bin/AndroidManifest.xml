@@ -23,11 +23,12 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Sherlock" >
         <provider
-            android:name="at.mikemitterer.tutorial.fragments.provider.DataProvider"
-            android:authorities="at.mikemitterer.tutorial.fragments.provider.dataprovider" />
+            android:name=".model.provider.DataProvider"
+            android:authorities="at.mikemitterer.tutorial.fragments.model.provider" 
+            android:exported="false"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.bignames.BigNamesActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,16 +37,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewerActivity"
+            android:name=".view.details.DetailsActivity"
             android:label="Tutorial Viewer" />
         
         <activity
-            android:name=".PrefsActivityForFragments"
+            android:name=".view.prefs.PrefsActivityForFragments"
             android:label="Preferences" >
         </activity>
         
         <activity
-            android:name=".PrefsActivitySimple"
+            android:name=".view.prefs.PrefsActivitySimple"
             android:label="Preferences" >
         </activity>
         

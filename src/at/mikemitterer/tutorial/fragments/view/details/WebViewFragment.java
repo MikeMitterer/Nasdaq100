@@ -28,7 +28,7 @@
  * 
  * <ORGANIZATION> = Mamlambo
  */
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.details;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,16 +42,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
+import at.mikemitterer.tutorial.fragments.R;
 
 import com.google.inject.Inject;
 
-public class ViewerFragment extends RoboFragment {
-	private static Logger	logger	= LoggerFactory.getLogger(ViewerFragment.class.getSimpleName());
+public class WebViewFragment extends RoboFragment {
+	private static Logger	logger	= LoggerFactory.getLogger(WebViewFragment.class.getSimpleName());
 
 	private ViewGroup		viewer	= null;
 
-	private final Button	button	= null;
+	//private final Button	button	= null;
 
 	@Inject
 	protected EventManager	eventbus;
@@ -76,7 +76,7 @@ public class ViewerFragment extends RoboFragment {
 			bundle = getActivity().getIntent().getExtras();
 		}
 		final String url = bundle.getString("url");
-		final String currentSymbol = bundle.getString("symbol");
+		//final String currentSymbol = bundle.getString("symbol");
 
 		updateUrl(url);
 

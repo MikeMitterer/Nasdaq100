@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.util;
+package at.mikemitterer.tutorial.fragments.model.util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import at.mikemitterer.tutorial.fragments.to.StockInfoTO;
+import at.mikemitterer.tutorial.fragments.model.to.StockInfoTO;
 
 public class AsyncParser extends AsyncTask<Context, StockInfoTO, List<StockInfoTO>> {
 	private final static String		FILENAME	= "stockinfo.xml";

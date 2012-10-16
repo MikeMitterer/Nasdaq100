@@ -28,7 +28,7 @@
  * 
  * <ORGANIZATION> = Mamlambo
  */
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.details;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.events.ShowStockInfo;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayout;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayoutFactory;
+import at.mikemitterer.tutorial.fragments.view.bignames.BigNamesActivity;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFactory;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -52,10 +54,10 @@ import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmen
 import com.google.inject.Inject;
 
 @ContentView(R.layout.view_fragment)
-public class ViewerActivity extends RoboSherlockFragmentActivity /* implements ColorFragment.OnShowMoreListener */{
+public class DetailsActivity extends RoboSherlockFragmentActivity /* implements ColorFragment.OnShowMoreListener */{
 
 	@SuppressWarnings("unused")
-	private static Logger				logger	= LoggerFactory.getLogger(ViewerActivity.class.getSimpleName());
+	private static Logger				logger	= LoggerFactory.getLogger(DetailsActivity.class.getSimpleName());
 
 	@Inject
 	protected EventManager				eventbus;
@@ -76,11 +78,11 @@ public class ViewerActivity extends RoboSherlockFragmentActivity /* implements C
 		final String url = bundle.getString("url");
 		//currentSymbol = bundle.getString("symbol");
 
-		final ViewerFragment viewer = (ViewerFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
 
 		viewer.updateUrl(url);
 
-		final ColorFragment colorviewer = (ColorFragment) getSupportFragmentManager().findFragmentById(R.id.colorview_fragment);
+		final StockInfoFragment colorviewer = (StockInfoFragment) getSupportFragmentManager().findFragmentById(R.id.colorview_fragment);
 		colorviewer.updateUrl(url);
 
 		final ActionBar actionbar = getSupportActionBar();
@@ -149,7 +151,7 @@ public class ViewerActivity extends RoboSherlockFragmentActivity /* implements C
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			final Intent intent = new Intent(this, MainActivity.class);
+			final Intent intent = new Intent(this, BigNamesActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;

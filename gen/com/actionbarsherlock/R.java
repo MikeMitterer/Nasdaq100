@@ -15,8 +15,6 @@ public final class R {
     }
     public static final class array {
         public static final int roboguice_modules=0x7f0d0000;
-        public static final int tut_links=0x7f0d0002;
-        public static final int tut_titles=0x7f0d0001;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1102,9 +1100,8 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f0b0009;
         public static final int app_name=0x7f0b0010;
         public static final int hello=0x7f0b000f;
-        public static final int menu_show_settings=0x7f0b0013;
-        public static final int menu_show_stockinfo=0x7f0b0012;
-        public static final int pick_label=0x7f0b0011;
+        public static final int menu_show_settings=0x7f0b0012;
+        public static final int menu_show_stockinfo=0x7f0b0011;
     }
     public static final class style {
         public static final int DialogWindowTitle_Sherlock=0x7f0c0036;

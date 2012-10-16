@@ -1,10 +1,11 @@
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.prefs;
 
 import java.util.List;
 
 import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import at.mikemitterer.tutorial.fragments.R;
 
 @TargetApi(11)
 public class PrefsActivityForFragments extends PreferenceActivity {

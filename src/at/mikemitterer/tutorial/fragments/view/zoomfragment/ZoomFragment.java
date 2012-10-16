@@ -1,10 +1,11 @@
-package at.mikemitterer.tutorial.fragments;
+package at.mikemitterer.tutorial.fragments.view.zoomfragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
 
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockDialogFragment;

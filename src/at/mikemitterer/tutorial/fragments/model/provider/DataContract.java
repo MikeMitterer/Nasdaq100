@@ -1,10 +1,10 @@
-package at.mikemitterer.tutorial.fragments.provider;
+package at.mikemitterer.tutorial.fragments.model.provider;
 
 import android.net.Uri;
 
 public final class DataContract {
 	private static final String	SCHEME		= "content://";
-	public static final String	AUTHORITY	= "at.mikemitterer.tutorial.fragments.provider.dataprovider";	// muss mit der Authority im Manifest zusammenstimmen.
+	public static final String	AUTHORITY	= "at.mikemitterer.tutorial.fragments.model.provider";	// muss mit der Authority im Manifest zusammenstimmen.
 
 	public static final class MimeTypes {
 		public static final String	STOCKINFO_TYPE		= "vnd.android.cursor.dir/vnd.mikemitterer.tutorial.fragments.stockinfo";

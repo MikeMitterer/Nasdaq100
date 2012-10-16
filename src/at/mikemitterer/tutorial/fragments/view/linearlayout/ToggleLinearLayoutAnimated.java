@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.view.impl;
+package at.mikemitterer.tutorial.fragments.view.linearlayout;
 
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
@@ -8,7 +8,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.widget.LinearLayout;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayout;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;

@@ -1,7 +1,6 @@
-package at.mikemitterer.tutorial.fragments.view.impl;
+package at.mikemitterer.tutorial.fragments.view.linearlayout;
 
 import android.widget.LinearLayout;
-import at.mikemitterer.tutorial.fragments.view.ToggleLinearLayout;
 
 import com.google.inject.assistedinject.Assisted;
 

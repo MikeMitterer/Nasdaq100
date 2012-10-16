@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.provider;
+package at.mikemitterer.tutorial.fragments.model.provider;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,9 +16,9 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
-import at.mikemitterer.tutorial.fragments.to.StockInfoTO;
-import at.mikemitterer.tutorial.fragments.util.AsyncParser;
-import at.mikemitterer.tutorial.fragments.util.AsyncParser.Callback;
+import at.mikemitterer.tutorial.fragments.model.to.StockInfoTO;
+import at.mikemitterer.tutorial.fragments.model.util.AsyncParser;
+import at.mikemitterer.tutorial.fragments.model.util.AsyncParser.Callback;
 
 public class DataProvider extends ContentProvider {
 	private static Logger				logger			= LoggerFactory.getLogger(DataProvider.class.getSimpleName());
