@@ -81,7 +81,7 @@ public class StockInfoFragment extends RoboFragment {
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		viewer = (ViewGroup) inflater.inflate(R.layout.color, container, false);
+		viewer = (ViewGroup) inflater.inflate(R.layout.stockinfo, container, false);
 		imageview = (ImageView) viewer.findViewById(R.id.stockinfo);
 
 		imageloader = ImageLoader.getInstance();

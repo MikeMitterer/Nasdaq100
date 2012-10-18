@@ -3,6 +3,6 @@
     android:id="@+id/tutlist_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="at.mikemitterer.tutorial.fragments.BigNamesListFragment" >
+    android:name="at.mikemitterer.tutorial.fragments.view.bignames.BigNamesFragment" >
 
 </fragment>

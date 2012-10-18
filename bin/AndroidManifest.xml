@@ -24,7 +24,7 @@
         android:theme="@style/Theme.Sherlock" >
         <provider
             android:name=".model.provider.DataProvider"
-            android:authorities="at.mikemitterer.tutorial.fragments.model.provider" 
+            android:authorities="at.mikemitterer.tutorial.fragments.model.provider.DataProvider" 
             android:exported="false"/>
 
         <activity
