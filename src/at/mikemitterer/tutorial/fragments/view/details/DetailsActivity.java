@@ -36,12 +36,14 @@ import org.slf4j.LoggerFactory;
 import roboguice.event.EventManager;
 import roboguice.event.Observes;
 import roboguice.inject.ContentView;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.events.ShowStockInfo;
+import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
+import at.mikemitterer.tutorial.fragments.exception.CreationOfBundleNotPossible;
+import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
+import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
 import at.mikemitterer.tutorial.fragments.view.bignames.BigNamesActivity;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFactory;
@@ -56,7 +58,6 @@ import com.google.inject.Inject;
 @ContentView(R.layout.view_fragment)
 public class DetailsActivity extends RoboSherlockFragmentActivity /* implements ColorFragment.OnShowMoreListener */{
 
-	@SuppressWarnings("unused")
 	private static Logger				logger	= LoggerFactory.getLogger(DetailsActivity.class.getSimpleName());
 
 	@Inject
@@ -75,65 +76,33 @@ public class DetailsActivity extends RoboSherlockFragmentActivity /* implements 
 		final Intent launchingIntent = getIntent();
 		//final String content = launchingIntent.getData().toString();
 		final Bundle bundle = launchingIntent.getExtras();
-		final String url = bundle.getString("url");
+		//final String url = bundle.getString("url");
 		//currentSymbol = bundle.getString("symbol");
 
-		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+		//final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
 
-		viewer.updateUrl(url);
-
-		final StockInfoFragment colorviewer = (StockInfoFragment) getSupportFragmentManager().findFragmentById(R.id.colorview_fragment);
-		colorviewer.updateUrl(url);
+		//viewer.updateUrl(url);
+		MinimalStockInfoTO minimalStockInfoTO;
+		try {
+			minimalStockInfoTO = StockInfoUtil.createMinimalStockInfo(bundle);
+			eventbus.fire(minimalStockInfoTO);
+		}
+		catch (final CreationOfBundleNotPossible e) {
+			e.printStackTrace();
+		}
 
 		final ActionBar actionbar = getSupportActionBar();
 		actionbar.setDisplayHomeAsUpEnabled(true);
-		//colorviewer.updateStockInfo(currentSymbol);
+
+		logger.debug("Details Activity created...");
 	}
 
-	@SuppressLint("NewApi")
-	public void onShowMoreSelect(@Observes final ShowStockInfo showstockinfo) {
+	public void onShowMoreSelect(@Observes final ShowStockInfoScreen showstockinfoscreen) {
 		final LinearLayout layout = (LinearLayout) findViewById(R.id.viewer_layout);
 		final ToggleLinearLayout tll = toggleLinearLayoutFactory.create(layout, 2f, 3f);
 
 		tll.toggle();
 
-		//		final LinearLayout layout2 = (LinearLayout) findViewById(R.id.viewer_layout);
-		//		final int sdk = new Integer(Build.VERSION.SDK_INT);
-		//
-		//		if (sdk < 11) {
-		//			layout2.setWeightSum(layout2.getWeightSum() > 2.0f ? 2.0f : 3.0f);
-		//			layout2.requestLayout();
-		//		}
-		//		else {
-		//			final float weight = layout2.getWeightSum();
-		//
-		//			//final ObjectAnimator anim = ObjectAnimator.ofFloat(layout, "weightSum", weight, weight > 2.0f ? 2.0f : 3.0f);
-		//			final ObjectAnimator anim = (ObjectAnimator) AnimatorInflater.loadAnimator(this, R.animator.show_with_weight);
-		//
-		//			//anim.setDuration(200);
-		//			anim.setTarget(layout);
-		//			anim.addUpdateListener(new AnimatorUpdateListener() {
-		//
-		//				@Override
-		//				public void onAnimationUpdate(final ValueAnimator animation) {
-		//					layout.requestLayout();
-		//				}
-		//			});
-		//			if (weight < 3.0f) {
-		//				anim.start();
-		//			}
-		//			else {
-		//				anim.reverse();
-		//			}
-		//		}
-
-		//		final ColorFragment colorviewer = (ColorFragment) getSupportFragmentManager().findFragmentById(R.id.colorview_fragment);
-		//		colorviewer.updateStockInfo(currentSymbol);
-
-		//		final FragmentTransaction ft = getFragmentManager().beginTransaction();
-		//		final Fragment fragment = getFragmentManager().findFragmentById(R.id.tutview_fragment);
-		//		ft.setCustomAnimations(R.animator.slide_in, R.animator.slide_out);
-		//		ft.commit();
 	}
 
 	@Override
@@ -146,6 +115,7 @@ public class DetailsActivity extends RoboSherlockFragmentActivity /* implements 
 	}
 
 	@Override
+	// If called on a Phone (SinglePane-Layout)
 	public boolean onOptionsItemSelected(final MenuItem item) {
 
 		switch (item.getItemId()) {
@@ -155,8 +125,9 @@ public class DetailsActivity extends RoboSherlockFragmentActivity /* implements 
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
+
 		case R.id.show_stockinfo:
-			eventbus.fire(new ShowStockInfo());
+			eventbus.fire(new ShowStockInfoScreen());
 			return true;
 		}
 

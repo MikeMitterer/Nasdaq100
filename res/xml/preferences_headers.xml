@@ -2,12 +2,12 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <header
-        android:fragment="at.mikemitterer.tutorial.fragments.PrefsUserFragment"
+        android:fragment="at.mikemitterer.tutorial.fragments.view.prefs.PrefsUserFragment"
         android:summary="Home Field Advantage user settings"
         android:title="User Settings" />
 
     <header
-        android:fragment="at.mikemitterer.tutorial.fragments.PrefsLangFragment"
+        android:fragment="at.mikemitterer.tutorial.fragments.view.prefs.PrefsLangFragment"
         android:summary="Language specific settings"
         android:title="Language Settings" />
     

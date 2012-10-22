@@ -1,5 +1,5 @@
 package at.mikemitterer.tutorial.fragments.events;
 
-public class ShowStockInfo {
+public class SortBySymbol {
 
 }

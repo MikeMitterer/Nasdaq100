@@ -64,6 +64,9 @@ public class ImageListAdapter extends CursorAdapter {
 		final String company = cursor.getString(Columns.StockInfo.INDEX.NAME.ordinal());
 		holder.company.setText(company);
 
+		final String weighting = cursor.getString(Columns.StockInfo.INDEX.WEIGHTING.ordinal());
+		holder.weighting.setText(weighting);
+
 		imageloader.displayImage(BASEURL + "/" + symbol + "/logo.png", holder.logo, new LoadIndicator(holder.logo, holder.spinnerframe));
 
 	}
@@ -81,6 +84,7 @@ public class ImageListAdapter extends CursorAdapter {
 			holder.logo = (ImageView) view.findViewById(R.id.image);
 			holder.spinnerframe = (ViewGroup) view.findViewById(R.id.spinnerframe);
 			holder.company = (TextView) view.findViewById(R.id.list_company);
+			holder.weighting = (TextView) view.findViewById(R.id.list_weighting);
 			view.setTag(holder);
 		}
 
@@ -96,6 +100,7 @@ public class ImageListAdapter extends CursorAdapter {
 		ImageView	logo;
 		TextView	symbol;
 		TextView	company;
+		TextView	weighting;
 		//ProgressBar	spinner;
 		ViewGroup	spinnerframe;
 	}

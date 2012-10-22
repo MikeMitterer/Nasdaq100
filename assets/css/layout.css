@@ -1,0 +1,12 @@
+body {
+	background-color: #000000;
+	color: #ffffff;
+	font-family: Arial;
+}
+
+.centeredImage {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+}

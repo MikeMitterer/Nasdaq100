@@ -34,36 +34,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import roboguice.event.EventManager;
+import roboguice.event.Observes;
 import roboguice.inject.ContentView;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.model.provider.Columns;
+import at.mikemitterer.tutorial.fragments.events.OnItemClicked;
+import at.mikemitterer.tutorial.fragments.events.OnShowItem;
+import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
+import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
+import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
+import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
 import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
 import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactory;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import com.google.inject.Inject;
 
 @ContentView(R.layout.main_fragment)
-public class BigNamesActivity extends RoboSherlockFragmentActivity implements BigNamesFragment.OnTutSelectedListener {
+// Either single-pane or multi-pane
+public class BigNamesActivity extends RoboSherlockFragmentActivity {
 
-	@SuppressWarnings("unused")
 	private static Logger	logger	= LoggerFactory.getLogger(BigNamesActivity.class.getSimpleName());
-
-	//	@Override
-	//	public void onCreate(final Bundle savedInstanceState) {
-	//		super.onCreate(savedInstanceState);
-	//
-	//		// Install Layout
-	//		setContentView(R.layout.main_fragment);
-	//	}
 
 	@Inject
 	protected EventManager	eventbus;
@@ -72,20 +66,16 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity implements Bi
 	protected PrefsFactory	prefsFactory;
 
 	@Override
-	public void onTutSelected(final Cursor cursor) {
+	protected void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		logger.debug("BigNames Activity created...");
+	}
+
+	// Sent by BigNamesFragment
+	public void onItemClicked(@Observes final OnItemClicked event) {
 		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
-		final String symbol = cursor.getString(Columns.StockInfo.INDEX.SYMBOL.ordinal());
-		final String url_fallback = cursor.getString(Columns.StockInfo.INDEX.URL_EN.ordinal());
 
-		String url = cursor.getString(Columns.StockInfo.INDEX.URL_DE.ordinal());
-
-		if (url.isEmpty()) {
-			url = url_fallback;
-		}
-
-		final Bundle bundle = new Bundle();
-		bundle.putString("url", Uri.parse(url).toString());
-		bundle.putString("symbol", symbol);
+		final Bundle bundle = StockInfoUtil.createBundle(event.minimalstockinfo);
 
 		if (viewer == null || !viewer.isInLayout()) {
 			final Intent showContent = new Intent(getApplicationContext(), DetailsActivity.class);
@@ -94,21 +84,8 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity implements Bi
 			startActivity(showContent);
 		}
 		else {
-			eventbus.fire(bundle);
-			//viewer.setArguments(bundle);
-
-			//viewer.updateUrl(url);
-			//viewer.updateStockInfo(symbol);
+			eventbus.fire(new OnShowItem(event.minimalstockinfo));
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(final Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		final MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.home, menu);
-
-		return true;
 	}
 
 	@Override
@@ -121,6 +98,19 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity implements Bi
 			final Intent launchPreferencesIntent = new Intent(this, prefsFactory.get());
 			startActivity(launchPreferencesIntent);
 			return true;
+
+		case R.id.menu_sort_by_symbol:
+			eventbus.fire(new SortBySymbol());
+			return true;
+
+		case R.id.menu_sort_by_weighting:
+			eventbus.fire(new SortByWeighting());
+			return true;
+
+		case R.id.show_stockinfo:
+			eventbus.fire(new ShowStockInfoScreen());
+			return true;
+
 		}
 
 		return super.onOptionsItemSelected(item);

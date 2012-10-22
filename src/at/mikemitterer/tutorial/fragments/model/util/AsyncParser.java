@@ -102,6 +102,8 @@ public class AsyncParser extends AsyncTask<Context, StockInfoTO, List<StockInfoT
 
 			StockInfoTO stockinfo = null;
 			int eventType = xml.getEventType();
+			int index = 0;
+
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				if (eventType == XmlPullParser.START_DOCUMENT) {
 					//logger.debug("In start document");
@@ -110,6 +112,7 @@ public class AsyncParser extends AsyncTask<Context, StockInfoTO, List<StockInfoT
 					//logger.debug("In start tag = " + xml.getName());
 					if (xml.getName().compareToIgnoreCase("record") == 0) {
 						stockinfo = new StockInfoTO();
+						stockinfo.setUid(index);
 					}
 					else if (xml.getName().compareToIgnoreCase("symbol") == 0) {
 						stockinfo.setSymbol(xml.nextText());
@@ -132,6 +135,7 @@ public class AsyncParser extends AsyncTask<Context, StockInfoTO, List<StockInfoT
 					if (xml.getName().compareToIgnoreCase("record") == 0) {
 						stockinfos.add(stockinfo);
 						publishProgress(stockinfo);
+						index++;
 						//callback.update(stockinfo);
 					}
 				}

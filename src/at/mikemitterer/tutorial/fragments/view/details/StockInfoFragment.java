@@ -33,7 +33,7 @@ package at.mikemitterer.tutorial.fragments.view.details;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import roboguice.fragment.RoboFragment;
+import roboguice.event.Observes;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -46,16 +46,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
+import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
 import at.mikemitterer.tutorial.fragments.model.util.ThreadUtil;
 import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragment;
 import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
 
+import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 
-public class StockInfoFragment extends RoboFragment {
+public class StockInfoFragment extends RoboSherlockFragment {
 	private static Logger	logger	= LoggerFactory.getLogger(StockInfoFragment.class.getSimpleName());
 	private ImageLoader		imageloader;
 
@@ -73,6 +75,8 @@ public class StockInfoFragment extends RoboFragment {
 	@Inject
 	@URLFor5DaysImage
 	protected String				URLFor5DaysImage;
+
+	private String					currentSymbol	= null;
 
 	@Override
 	public void onAttach(final Activity activity) {
@@ -97,26 +101,30 @@ public class StockInfoFragment extends RoboFragment {
 		if (bundle == null) {
 			bundle = getActivity().getIntent().getExtras();
 		}
-		//final String url = bundle.getString("url");
-		final String currentSymbol = bundle.getString("symbol");
+		currentSymbol = null; // TODO Beschissene Lösung...
+		if (bundle != null) {
+			//final String url = bundle.getString("url");
+			currentSymbol = bundle.getString("symbol");
 
-		updateStockInfo(currentSymbol);
+			updateStockInfo(currentSymbol);
+		}
 
 		imageview.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(final View v) {
-				final FragmentTransaction ft = getFragmentManager().beginTransaction();
-				final Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-				if (prev != null) {
-					ft.remove(prev);
+				if (currentSymbol != null) {
+					final FragmentTransaction ft = getFragmentManager().beginTransaction();
+					final Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+					if (prev != null) {
+						ft.remove(prev);
+					}
+					ft.addToBackStack(null);
+
+					// Create and show the dialog.
+					final ZoomFragment dialog = zoomfragmentfactory.create(currentSymbol);
+					dialog.show(ft, "dialog");
 				}
-				ft.addToBackStack(null);
-
-				// Create and show the dialog.
-				final ZoomFragment dialog = zoomfragmentfactory.create(currentSymbol);
-				dialog.show(ft, "dialog");
-
 			}
 		});
 	}
@@ -136,16 +144,22 @@ public class StockInfoFragment extends RoboFragment {
 	//
 	//	}
 
-	public void updateUrl(final String newUrl) {
-		if (viewer != null) {
-			//			final TextView tv = (TextView) viewer.findViewById(R.id.color_name);
-			//			if (tv != null) {
-			//				tv.setText(newUrl);
-			//			}
-		}
+	public void onStockInfoChanged(@Observes final MinimalStockInfoTO minimalstockinfo) {
+		updateStockInfo(minimalstockinfo.getSymbol());
 	}
 
-	public void updateStockInfo(final String symbol) {
+	@Override
+	public void onStop() {
+		super.onStop();
+		// TODO
+		//imageloader.stop();
+		logger.debug("onStop called for ColorFragment...");
+	}
+
+	//---------------------------------------------------------------------------------------------
+	// private
+	//---------------------------------------------------------------------------------------------
+	private void updateStockInfo(final String symbol) {
 		ThreadUtil.logThreadSignature();
 
 		if (viewer != null) {
@@ -201,11 +215,4 @@ public class StockInfoFragment extends RoboFragment {
 		logger.debug("Update Info in ColorFragment for {}", symbol);
 	}
 
-	@Override
-	public void onStop() {
-		super.onStop();
-		// TODO
-		//imageloader.stop();
-		logger.debug("onStop called for ColorFragment...");
-	}
 }

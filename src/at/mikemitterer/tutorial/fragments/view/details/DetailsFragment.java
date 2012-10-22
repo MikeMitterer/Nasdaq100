@@ -35,91 +35,67 @@ import org.slf4j.LoggerFactory;
 
 import roboguice.event.EventManager;
 import roboguice.event.Observes;
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import at.mikemitterer.tutorial.fragments.R;
+import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
+import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFactory;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 
-public class WebViewFragment extends RoboSherlockFragment {
+public class DetailsFragment extends RoboSherlockFragment {
 	@SuppressWarnings("unused")
-	private static Logger	logger	= LoggerFactory.getLogger(WebViewFragment.class.getSimpleName());
-
-	private ViewGroup		viewer	= null;
-
-	//private final Button	button	= null;
+	private static Logger				logger	= LoggerFactory.getLogger(DetailsFragment.class.getSimpleName());
 
 	@Inject
-	protected EventManager	eventbus;
+	protected EventManager				eventbus;
+
+	@Inject
+	protected ToggleLinearLayoutFactory	toggleLinearLayoutFactory;
+
+	public interface OnShowMoreListener {
+		public void onShowMoreSelect();
+	}
+
+	private View	view	= null;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		viewer = (ViewGroup) inflater.inflate(R.layout.webview, container, false);
+		view = inflater.inflate(R.layout.view_fragment, container, false);
+		setHasOptionsMenu(true);
+		return view;
+	}
 
-		//		button = (Button) viewer.findViewById(R.id.button_show_second_fragment);
-		//
-		//		button.setOnClickListener(new View.OnClickListener() {
-		//
-		//			@Override
-		//			public void onClick(final View v) {
-		//				eventbus.fire(new ShowStockInfo());
-		//				//showmorelistener.onShowMoreSelect();
-		//			}
-		//		});
+	public void onShowMoreSelect(@Observes final ShowStockInfoScreen showstockinfo) {
+		final LinearLayout layout = (LinearLayout) view.findViewById(R.id.viewer_layout);
+		final ToggleLinearLayout tll = toggleLinearLayoutFactory.create(layout, 2f, 3f);
 
-		Bundle bundle = getArguments();
-		if (bundle == null) {
-			bundle = getActivity().getIntent().getExtras();
-		}
-		final String url;
-		if (bundle != null) {
-			url = bundle.getString("url");
-			//final String currentSymbol = bundle.getString("symbol");
-		}
-		else {
-			url = "file:///android_asset/default.html";
-		}
-
-		updateUrl(url);
-		return viewer;
+		tll.toggle();
 	}
 
 	@Override
-	public void onActivityCreated(final Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
+	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+		//menu.add(R.menu.main);
+		inflater.inflate(R.menu.main, menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	public void onClickOnListEvent(@Observes final Bundle bundle) {
-		final String url = bundle.getString("url");
-		//final String currentSymbol = bundle.getString("symbol");
-
-		updateUrl(url);
-	}
-
-	@SuppressLint("SetJavaScriptEnabled")
-	public void updateUrl(final String newUrl) {
-		if (viewer != null) {
-			final WebView wv = (WebView) viewer.findViewById(R.id.tutView);
-			if (wv != null) {
-				wv.setWebViewClient(new WebViewClient() {
-					@Override
-					public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-						return false;
-					}
-
-				});
-
-				// Is needed for LoadIndicator (http://heartcode.robertpataki.com/canvasloader/)
-				wv.getSettings().setJavaScriptEnabled(true);
-				wv.loadUrl(newUrl);
-			}
-		}
-	}
-
+	//@Override
+	// If called on a Tablet (MultiPane-Layout)
+	//	public boolean onOptionsItemSelected(final MenuItem item) {
+	//		switch (item.getItemId()) {
+	//		case R.id.show_stockinfo:
+	//			eventbus.fire(new ShowStockInfo());
+	//			return true;
+	//		}
+	//
+	//		return super.onOptionsItemSelected(item);
+	//	}
 }

@@ -1,22 +1,32 @@
 package at.mikemitterer.tutorial.fragments.model.to;
 
 public class StockInfoTO {
-	public String	symbol		= "";
-	public String	url_de		= "";
-	public String	url_en		= "";
-	public String	name		= "";
-	public float	weighting	= 0f;
+	private int		uid			= 0;
+	private String	symbol		= "";
+	private String	url_de		= "";
+	private String	url_en		= "";
+	private String	name		= "";
+	private float	weighting	= 0f;
 
 	public StockInfoTO() {
 
 	}
 
-	public StockInfoTO(final String symbol, final String url_en, final String url_de, final String name, final float weighting) {
+	public StockInfoTO(final int uid, final String symbol, final String url_en, final String url_de, final String name, final float weighting) {
+		this.uid = uid;
 		this.symbol = symbol;
 		this.url_de = url_de;
 		this.url_en = url_en;
 		this.name = name;
 		this.weighting = weighting;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(final int uid) {
+		this.uid = uid;
 	}
 
 	public String getSymbol() {

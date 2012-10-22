@@ -33,7 +33,8 @@ package at.mikemitterer.tutorial.fragments.view.bignames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import android.app.Activity;
+import roboguice.event.EventManager;
+import roboguice.event.Observes;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -42,9 +43,18 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.view.View;
 import android.widget.ListView;
+import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
+import at.mikemitterer.tutorial.fragments.events.OnItemClicked;
+import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
+import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
+import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 import at.mikemitterer.tutorial.fragments.model.provider.DataContract;
+import at.mikemitterer.tutorial.fragments.model.util.LanguageForURL;
+import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockListFragment;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -55,7 +65,10 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 
 	private static final int		LIST_LOADER	= 0x01;
 
-	private OnTutSelectedListener	tutSelectedListener;
+	private String					sortOrder	= Columns.StockInfo.ORDER_BY_SYMBOL;
+
+	@Inject
+	private EventManager			eventbus;
 
 	@Inject
 	@ForLogoList
@@ -68,7 +81,9 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	@Override
 	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
 		final Cursor cursor = (Cursor) l.getAdapter().getItem(position);
-		tutSelectedListener.onTutSelected(cursor);
+
+		// TODO Sprache richtig setzen
+		eventbus.fire(new OnItemClicked(StockInfoUtil.createMinimalStockInfo(cursor, LanguageForURL.GERMAN)));
 	}
 
 	@Override
@@ -84,12 +99,12 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 		//				CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
 		//mAdapter = new ImageListAdapter(getActivity(), R.layout.list_item, providerForImageLoader.get());
+		logger.debug("Hide List because it is empty...");
+		setListShown(false);
 
 		// Bind to our new adapter.
 		logger.debug("ListAdapter created...");
 		setListAdapter(mAdapter);
-
-		setListShown(false);
 
 		logger.debug("initLoader...");
 		getLoaderManager().initLoader(LIST_LOADER, null, this);
@@ -133,20 +148,27 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 		//		getLoaderManager().initLoader(0, null, this);
 	}
 
-	public interface OnTutSelectedListener {
-		public void onTutSelected(final Cursor cursor);
+	public void onSortBySymbol(@Observes final SortBySymbol event) {
+		sortOrder = Columns.StockInfo.ORDER_BY_SYMBOL;
+		getLoaderManager().restartLoader(0, null, this);
+	}
+
+	public void onSortByWeighting(@Observes final SortByWeighting event) {
+		sortOrder = Columns.StockInfo.ORDER_BY_WEIGHTING;
+		getLoaderManager().restartLoader(0, null, this);
 	}
 
 	@Override
-	public void onAttach(final Activity activity) {
-		super.onAttach(activity);
-		try {
-			tutSelectedListener = (OnTutSelectedListener) activity;
-		}
-		catch (final ClassCastException e) {
-			throw new ClassCastException(activity.toString()
-					+ " must implement OnTutSelectedListener");
-		}
+	public void onCreate(final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+	}
+
+	@Override
+	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+		//final MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.home, menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	//---------------------------------------------------------------------------------------------
@@ -156,22 +178,32 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	@Override
 	public Loader<Cursor> onCreateLoader(final int arg0, final Bundle arg1) {
 		logger.debug("onCreateLoader");
-		return new CursorLoader(getActivity(), DataContract.StockInfos.URI, null, null, null, null);
+		return new CursorLoader(getActivity(), DataContract.StockInfos.URI, null, null, null, sortOrder);
 	}
 
 	@Override
-	public void onLoadFinished(final Loader<Cursor> arg0, final Cursor data) {
+	public void onLoadFinished(final Loader<Cursor> arg0, final Cursor cursor) {
 		// Swap the new cursor in.  (The framework will take care of closing the
 		// old cursor once we return.)
 		logger.debug("onLoadFinished");
-		mAdapter.swapCursor(data);
+		mAdapter.swapCursor(cursor);
 
 		// The list should now be shown.
 		if (isResumed()) {
+			logger.debug("Show ListView, Cursor is filled with data...");
 			setListShown(true);
 		}
 		else {
+			logger.debug("Show ListView (NoAnimation), Cursor is filled with data...");
 			setListShownNoAnimation(true);
+		}
+
+		// If in DualPane-Layout show info (WIKI-Page) for first symbol
+		// If in SinglePane-Layout there is not listener for this event so nothing happens
+		// TODO Sprache richtig setzten
+		if (cursor != null && cursor.getCount() > 0) {
+			cursor.moveToFirst();
+			eventbus.fire(StockInfoUtil.createMinimalStockInfo(cursor, LanguageForURL.GERMAN));
 		}
 	}
 

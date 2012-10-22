@@ -1,10 +1,9 @@
 package at.mikemitterer.tutorial.fragments.model.provider;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,13 +20,13 @@ import at.mikemitterer.tutorial.fragments.model.util.AsyncParser;
 import at.mikemitterer.tutorial.fragments.model.util.AsyncParser.Callback;
 
 public class DataProvider extends ContentProvider {
-	private static Logger				logger			= LoggerFactory.getLogger(DataProvider.class.getSimpleName());
+	private static Logger			logger			= LoggerFactory.getLogger(DataProvider.class.getSimpleName());
 
-	private static final UriMatcher		uriMatcher;
+	private static final UriMatcher	uriMatcher;
 	//private DBHelper				dbhelper;
 
-	private static final int			STOCKINFOS		= 1;
-	private static final int			STOCKINFOS_ID	= 2;
+	private static final int		STOCKINFOS		= 1;
+	private static final int		STOCKINFOS_ID	= 2;
 
 	static {
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -36,9 +35,9 @@ public class DataProvider extends ContentProvider {
 		uriMatcher.addURI(DataContract.AUTHORITY, DataContract.StockInfos.PATH_ID + "#", STOCKINFOS_ID);
 	}
 
-	private AsyncParser					parser			= null;
-	private Map<Integer, StockInfoTO>	stockinfos		= null;
-	private boolean						queryInProgress	= false;
+	private AsyncParser				parser			= null;
+	private List<StockInfoTO>		stockinfos		= null;
+	private boolean					queryInProgress	= false;
 
 	@Override
 	public boolean onCreate() {
@@ -47,7 +46,8 @@ public class DataProvider extends ContentProvider {
 		parser.execute(getContext());
 		//parser.parseSyncron(getContext());
 
-		stockinfos = new TreeMap<Integer, StockInfoTO>();
+		//stockinfos = new TreeMap<Integer, StockInfoTO>();
+		stockinfos = new ArrayList<StockInfoTO>();
 		logger.debug("Finised creating ContentProvider...");
 		return true;
 	}
@@ -55,13 +55,14 @@ public class DataProvider extends ContentProvider {
 	@Override
 	public Cursor query(final Uri uri, final String[] projection, final String selection, final String[] selectionArgs, final String sortOrder) {
 		final int typeID = uriMatcher.match(uri);
+		final String orderBy = (sortOrder != null ? sortOrder : Columns.StockInfo.ORDER_BY_SYMBOL);
 		queryInProgress = true;
 		Cursor cursor = null;
 
 		switch (typeID) {
 		case STOCKINFOS:
 			logger.debug("query for URI: {}", uri);
-			cursor = createCursorForStockInfos();
+			cursor = createCursorForStockInfos(orderBy);
 			break;
 		case STOCKINFOS_ID:
 			final String id = uri.getPathSegments().get(1);
@@ -131,7 +132,7 @@ public class DataProvider extends ContentProvider {
 		public void update(final StockInfoTO stockinfo) {
 			synchronized(stockinfos) {
 				final int index = stockinfos.size();
-				stockinfos.put(index, stockinfo);
+				stockinfos.add(stockinfo);
 				if(index % 10 == 0 && index > 0 && queryInProgress == false) {
 					logger.debug("notifyChange on update, index: {}", index);
 					getContext().getContentResolver().notifyChange(DataContract.StockInfos.URI, null);
@@ -145,20 +146,56 @@ public class DataProvider extends ContentProvider {
 		return getContext().getContentResolver();
 	}
 
-	private synchronized Cursor createCursorForStockInfos() {
+	private synchronized Cursor createCursorForStockInfos(final String orderBy) {
 		final MatrixCursor cursor = new MatrixCursor(Columns.StockInfo.ALLCOLS);
 
 		synchronized (stockinfos) {
-			final Iterator<Entry<Integer, StockInfoTO>> iterator = stockinfos.entrySet().iterator();
-			while (iterator.hasNext()) {
-				final Entry<Integer, StockInfoTO> entry = iterator.next();
-				final StockInfoTO stockinfo = entry.getValue();
+			if (orderBy.equalsIgnoreCase(Columns.StockInfo.ORDER_BY_WEIGHTING)) {
+				Collections.sort(stockinfos, new WeightingComparator());
+			}
+			else {
+				Collections.sort(stockinfos, new SymbolComparator());
+			}
 
-				addRowToCursor(cursor, entry.getKey(), stockinfo);
+			for (final StockInfoTO stockinfo : stockinfos) {
+				addRowToCursor(cursor, stockinfo.getUid(), stockinfo);
 			}
 		}
 
 		return cursor;
+	}
+
+	//	private Map<Integer, StockInfoTO> sortMap(final Map<Integer, StockInfoTO> mapToSort) {
+	//		final Map<Integer, StockInfoTO> mapToUse = new TreeMap<Integer, StockInfoTO>();
+	//		final List<StockInfoTO> sortedList = new ArrayList<StockInfoTO>(mapToSort.values());
+	//
+	//		int index = 0;
+	//		Collections.sort(sortedList, new ListComparator());
+	//		for (final StockInfoTO stockinfo : sortedList) {
+	//			mapToUse.put(index, stockinfo);
+	//			index++;
+	//		}
+	//		return mapToUse;
+	//	}
+
+	private class WeightingComparator implements Comparator<StockInfoTO> {
+		@Override
+		public int compare(final StockInfoTO lhs, final StockInfoTO rhs) {
+			if (lhs.getWeighting() >= rhs.getWeighting()) {
+				return -1;
+			}
+			else {
+				return 1;
+			}
+		}
+
+	}
+
+	private class SymbolComparator implements Comparator<StockInfoTO> {
+		@Override
+		public int compare(final StockInfoTO lhs, final StockInfoTO rhs) {
+			return (lhs.getSymbol().compareTo(rhs.getSymbol()));
+		}
 	}
 
 	private synchronized Cursor createCursorForID(final Integer id) {

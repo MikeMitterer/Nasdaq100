@@ -34,8 +34,7 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal" 
-            />
+            android:layout_gravity="center_vertical|center_horizontal" />
     </FrameLayout>
 
     <LinearLayout
@@ -48,21 +47,51 @@
         android:showDividers="beginning|middle|end"
         android:visibility="visible" >
 
-        <TextView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/list_symbol"
+        <LinearLayout
+            android:id="@+id/symbol_weighting"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:textSize="16dp"
-            android:textStyle="bold" 
-            android:paddingBottom="@dimen/default_padding_50_percent"
-            android:paddingLeft="@dimen/default_padding"
-            android:paddingRight="@dimen/default_padding"
-            android:paddingTop="@dimen/default_padding"
+            android:layout_height="wrap_content" >
 
-            />
-        
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:paddingBottom="@dimen/default_padding_50_percent"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_weighting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingBottom="@dimen/default_padding_50_percent"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding_50_percent"
+                android:paddingTop="@dimen/default_padding"
+                android:textSize="16dp"/>
+
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:paddingBottom="@dimen/default_padding_50_percent"
+                android:paddingLeft="0dip"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/list_item_percent"
+                android:textSize="16dp"/>
+            
+        </LinearLayout>
+
         <TextView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/list_company"
@@ -74,7 +103,6 @@
             android:paddingRight="@dimen/default_padding"
             android:paddingTop="@dimen/default_padding_50_percent"
             android:textSize="16dp" />
-        
     </LinearLayout>
 
 </LinearLayout>
