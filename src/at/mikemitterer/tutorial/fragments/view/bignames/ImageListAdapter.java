@@ -30,6 +30,8 @@ public class ImageListAdapter extends CursorAdapter {
 
 	final ImageLoader				imageloader;
 
+	private final int[]				colors;
+
 	@Inject
 	public ImageListAdapter(final Context context, final Provider<ImageLoader> providerForImageLoader) {
 		// that constructor should be used with loaders.
@@ -37,6 +39,19 @@ public class ImageListAdapter extends CursorAdapter {
 
 		this.imageloader = providerForImageLoader.get();
 		mInflater = LayoutInflater.from(context);
+
+		colors = new int[2];
+		colors[0] = context.getResources().getColor(R.color.scheme_base_color);
+		colors[1] = context.getResources().getColor(R.color.scheme_variation1_color);
+	}
+
+	@Override
+	public View getView(final int position, final View convertView, final ViewGroup parent) {
+		final View view = super.getView(position, convertView, parent);
+
+		view.setBackgroundColor(colors[position % 2]);
+
+		return view;
 	}
 
 	@Override

@@ -693,14 +693,22 @@ containing a value of this type.
         public static final int abs__bright_foreground_inverse_holo_dark=0x7f080006;
         public static final int abs__bright_foreground_inverse_holo_light=0x7f080007;
         public static final int abs__holo_blue_light=0x7f080008;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f08000d;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f08000e;
-        public static final int abs__primary_text_holo_dark=0x7f08000f;
-        public static final int abs__primary_text_holo_light=0x7f080010;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f080015;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f080016;
+        public static final int abs__primary_text_holo_dark=0x7f080017;
+        public static final int abs__primary_text_holo_light=0x7f080018;
         public static final int black=0x7f08000c;
         public static final int blue=0x7f08000b;
         public static final int green=0x7f08000a;
         public static final int red=0x7f080009;
+        public static final int scheme_base_color=0x7f08000d;
+        public static final int scheme_complement1_color=0x7f080010;
+        public static final int scheme_complement2_color=0x7f080011;
+        public static final int scheme_text_dark=0x7f080013;
+        public static final int scheme_text_light=0x7f080012;
+        public static final int scheme_variation1_color=0x7f08000e;
+        public static final int scheme_variation2_color=0x7f08000f;
+        public static final int white=0x7f080014;
     }
     public static final class dimen {
         /**  Default height of an action bar. 

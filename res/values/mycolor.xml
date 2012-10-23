@@ -5,5 +5,13 @@
     <color name="green">#00ff00</color>
     <color name="blue">#0000ff</color>
     <color name="black">#000000</color>
+    <color name="scheme_base_color">#339ec7</color>
+    <color name="scheme_variation1_color">#1A7EA6</color>
+    <color name="scheme_variation2_color">#5BD0FF</color>
+    <color name="scheme_complement1_color">#FC8C0E</color>
+    <color name="scheme_complement2_color">#5C3C18</color>
+    <color name="scheme_text_light">#ffe0bf</color>
+    <color name="scheme_text_dark">#06465f</color>
+    <color name="white">#ffffff</color>
 
 </resources>

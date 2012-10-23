@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
+    android:background="@color/scheme_base_color"
     android:focusable="false"
     android:orientation="horizontal" >
 
@@ -15,6 +15,7 @@
         android:minEms="@integer/list_max_number_width"
         android:padding="6dp"
         android:text="12"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
     <ImageView
@@ -62,6 +63,7 @@
                 android:paddingLeft="@dimen/default_padding"
                 android:paddingRight="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding"
+                android:textColor="@color/scheme_text_dark"
                 android:textSize="16dp"
                 android:textStyle="bold" />
             
@@ -75,7 +77,8 @@
                 android:paddingLeft="@dimen/default_padding"
                 android:paddingRight="@dimen/default_padding_50_percent"
                 android:paddingTop="@dimen/default_padding"
-                android:textSize="16dp"/>
+                android:textColor="@color/white"
+                android:textSize="16dp" />
 
             <TextView
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -88,7 +91,8 @@
                 android:paddingRight="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding"
                 android:text="@string/list_item_percent"
-                android:textSize="16dp"/>
+                android:textColor="@color/white"
+                android:textSize="16dp" />
             
         </LinearLayout>
 
@@ -102,7 +106,9 @@
             android:paddingLeft="@dimen/default_padding"
             android:paddingRight="@dimen/default_padding"
             android:paddingTop="@dimen/default_padding_50_percent"
+            android:textColor="@color/scheme_text_dark"
             android:textSize="16dp" />
+
     </LinearLayout>
 
 </LinearLayout>

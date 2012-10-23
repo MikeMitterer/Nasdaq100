@@ -3,6 +3,7 @@
     android:id="@+id/frags"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="horizontal" >
 
     <fragment
@@ -21,6 +22,8 @@
         android:name="at.mikemitterer.tutorial.fragments.view.details.DetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/default_padding"
         android:layout_weight="1" >
+
     </fragment>    
 </LinearLayout>

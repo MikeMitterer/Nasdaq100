@@ -3,7 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
+    android:background="@color/scheme_variation1_color"
     android:focusable="false"
     android:orientation="vertical" >
 
@@ -22,7 +22,6 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:background="@color/blue"
         android:clickable="true"
         android:contentDescription="Placeholder Image"
         android:padding="@dimen/default_padding"
