@@ -13,5 +13,6 @@
     <color name="scheme_text_light">#ffe0bf</color>
     <color name="scheme_text_dark">#06465f</color>
     <color name="white">#ffffff</color>
-
+	<color name="gray_dark">#404040</color>
+	<color name="gray_light">#c8c8c8</color>
 </resources>

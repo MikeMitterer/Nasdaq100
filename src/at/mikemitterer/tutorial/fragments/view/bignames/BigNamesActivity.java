@@ -40,7 +40,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.events.OnItemClicked;
-import at.mikemitterer.tutorial.fragments.events.OnShowItem;
 import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
 import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
 import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
@@ -84,7 +83,7 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 			startActivity(showContent);
 		}
 		else {
-			eventbus.fire(new OnShowItem(event.minimalstockinfo));
+			eventbus.fire(event.minimalstockinfo);
 		}
 	}
 

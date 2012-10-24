@@ -5,9 +5,9 @@
     <item
         android:id="@+id/show_stockinfo"
         android:enabled="true"
-        android:icon="@drawable/menu_show_stockinfo"
+        android:icon="@drawable/ic_action_line_chart"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_show_stockinfo"
-        android:visible="true">
+        android:visible="true" android:menuCategory="container" android:orderInCategory="1">
 </item>
 </menu>

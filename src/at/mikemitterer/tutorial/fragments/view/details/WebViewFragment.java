@@ -43,6 +43,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import at.mikemitterer.tutorial.fragments.R;
+import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
 
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
@@ -95,11 +96,8 @@ public class WebViewFragment extends RoboSherlockFragment {
 		super.onActivityCreated(savedInstanceState);
 	}
 
-	public void onClickOnListEvent(@Observes final Bundle bundle) {
-		final String url = bundle.getString("url");
-		//final String currentSymbol = bundle.getString("symbol");
-
-		updateUrl(url);
+	public void onStockInfoChanged(@Observes final MinimalStockInfoTO minimalstockinfo) {
+		updateUrl(minimalstockinfo.getUrl());
 	}
 
 	@SuppressLint("SetJavaScriptEnabled")

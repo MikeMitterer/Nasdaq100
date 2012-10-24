@@ -693,12 +693,14 @@ containing a value of this type.
         public static final int abs__bright_foreground_inverse_holo_dark=0x7f080006;
         public static final int abs__bright_foreground_inverse_holo_light=0x7f080007;
         public static final int abs__holo_blue_light=0x7f080008;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f080015;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f080016;
-        public static final int abs__primary_text_holo_dark=0x7f080017;
-        public static final int abs__primary_text_holo_light=0x7f080018;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f080017;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f080018;
+        public static final int abs__primary_text_holo_dark=0x7f080019;
+        public static final int abs__primary_text_holo_light=0x7f08001a;
         public static final int black=0x7f08000c;
         public static final int blue=0x7f08000b;
+        public static final int gray_dark=0x7f080015;
+        public static final int gray_light=0x7f080016;
         public static final int green=0x7f08000a;
         public static final int red=0x7f080009;
         public static final int scheme_base_color=0x7f08000d;
@@ -826,6 +828,7 @@ containing a value of this type.
         public static final int action_button_min_width=0x7f090010;
         public static final int default_padding=0x7f090012;
         public static final int default_padding_50_percent=0x7f090013;
+        public static final int id_width=0x7f090014;
         public static final int webview_border=0x7f090011;
     }
     public static final class drawable {
@@ -941,12 +944,13 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_dark=0x7f02006d;
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int circular_progress=0x7f02006f;
-        public static final int icon=0x7f020070;
-        public static final int indicator=0x7f020071;
-        public static final int menu_show_stockinfo=0x7f020072;
-        public static final int progress_circular_background=0x7f020073;
-        public static final int progress_particle=0x7f020074;
-        public static final int stub=0x7f020075;
+        public static final int ic_action_line_chart=0x7f020070;
+        public static final int ic_action_settings=0x7f020071;
+        public static final int icon=0x7f020072;
+        public static final int indicator=0x7f020073;
+        public static final int progress_circular_background=0x7f020074;
+        public static final int progress_particle=0x7f020075;
+        public static final int stub=0x7f020076;
     }
     public static final class id {
         public static final int FrameLayout1=0x7f060046;
@@ -1118,10 +1122,15 @@ containing a value of this type.
         public static final int app_name=0x7f0b0010;
         public static final int hello=0x7f0b000f;
         public static final int list_item_percent=0x7f0b0015;
+        public static final int logo_description=0x7f0b001a;
         public static final int menu_show_settings=0x7f0b0012;
         public static final int menu_show_stockinfo=0x7f0b0011;
         public static final int menu_sort_by_symbol=0x7f0b0013;
         public static final int menu_sort_by_weighting=0x7f0b0014;
+        public static final int placeholder_company=0x7f0b0018;
+        public static final int placeholder_id=0x7f0b0016;
+        public static final int placeholder_symbol=0x7f0b0017;
+        public static final int placeholder_weighting=0x7f0b0019;
     }
     public static final class style {
         public static final int DialogWindowTitle_Sherlock=0x7f0c0036;

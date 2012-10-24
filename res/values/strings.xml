@@ -10,4 +10,10 @@
     <string name="menu_sort_by_symbol">Sort by symbol</string>
     <string name="menu_sort_by_weighting">Sort by weighting</string>
     <string name="list_item_percent">%</string>
+    <string name="placeholder_id">15</string>
+    <string name="placeholder_symbol">CHKP</string>
+    <string name="placeholder_company">Check Point</string>
+    <string name="placeholder_weighting">12.20</string>
+    <string name="logo_description">Company logo</string>
+
 </resources>

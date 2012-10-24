@@ -145,7 +145,8 @@ public class StockInfoFragment extends RoboSherlockFragment {
 	//	}
 
 	public void onStockInfoChanged(@Observes final MinimalStockInfoTO minimalstockinfo) {
-		updateStockInfo(minimalstockinfo.getSymbol());
+		currentSymbol = minimalstockinfo.getSymbol();
+		updateStockInfo(currentSymbol);
 	}
 
 	@Override

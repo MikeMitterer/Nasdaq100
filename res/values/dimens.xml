@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="webview_border">0dip</dimen>
-    <dimen name="default_padding">6dp</dimen>
-    <dimen name="default_padding_50_percent">3dp</dimen>
+    <dimen name="default_padding">4dp</dimen>
+    <dimen name="default_padding_50_percent">2dp</dimen>
+    <dimen name="id_width">33dp</dimen>
 </resources>

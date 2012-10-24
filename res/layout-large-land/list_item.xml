@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/scheme_base_color"
+    android:focusable="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="72dip"
+        android:layout_height="72dip"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/logo_description"
+        android:src="@drawable/stub" />
+
+    <FrameLayout
+        android:id="@+id/spinnerframe"
+        android:layout_width="72dip"
+        android:layout_height="72dip" >
+
+        <ProgressBar
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal" />
+    </FrameLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/decription_box"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="left|clip_horizontal"
+            android:orientation="vertical"
+            android:showDividers="beginning|middle|end"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/list_id"
+                    android:layout_width="@dimen/id_width"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:minEms="@integer/list_max_number_width"
+                    android:padding="6dp"
+                    android:paddingBottom="@dimen/default_padding_50_percent"
+                    android:paddingRight="@dimen/default_padding_50_percent"
+                    android:text="@string/placeholder_id"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:width="@dimen/id_width" />
+
+                <TextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/list_symbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:paddingBottom="@dimen/default_padding_50_percent"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/placeholder_symbol"
+                    android:textColor="@color/scheme_text_dark"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/list_weighting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:paddingBottom="@dimen/default_padding_50_percent"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding_50_percent"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/placeholder_weighting"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <TextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/list_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingBottom="@dimen/default_padding_50_percent"
+                    android:paddingLeft="0dip"
+                    android:paddingRight="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/list_item_percent"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <TextView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/list_company"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:lines="@integer/line_height_in_list"
+                android:paddingBottom="@dimen/default_padding"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding_50_percent"
+                android:text="@string/placeholder_company"
+                android:textColor="@color/scheme_text_dark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+</LinearLayout>

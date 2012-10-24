@@ -4,27 +4,31 @@
     <item
         android:id="@+id/menu_show_settings"
         android:enabled="true"
+        android:icon="@drawable/ic_action_settings"
         android:showAsAction="ifRoom"
         android:title="@string/menu_show_settings"
-        android:visible="true">
+        android:visible="true" android:menuCategory="container" android:orderInCategory="2">
     </item>
-    <group android:id="@+id/group1" android:visible="true" android:enabled="true" android:menuCategory="container">
-    
-    <item
-        android:id="@+id/menu_sort_by_symbol"
+
+    <group
+        android:id="@+id/group1"
         android:enabled="true"
-        android:showAsAction="never|collapseActionView"
-        android:title="@string/menu_sort_by_symbol"
-        android:visible="true">
-    </item>
-    <item
-        android:id="@+id/menu_sort_by_weighting"
-        android:enabled="true"
-        android:showAsAction="never|collapseActionView"
-        android:title="@string/menu_sort_by_weighting"
-        android:visible="true">
-    </item>
-        
+        android:menuCategory="container"
+        android:visible="true" >
+        <item
+            android:id="@+id/menu_sort_by_symbol"
+            android:enabled="true"
+            android:showAsAction="never|collapseActionView"
+            android:title="@string/menu_sort_by_symbol"
+            android:visible="true">
+        </item>
+        <item
+            android:id="@+id/menu_sort_by_weighting"
+            android:enabled="true"
+            android:showAsAction="never|collapseActionView"
+            android:title="@string/menu_sort_by_weighting"
+            android:visible="true">
+        </item>
     </group>
 
 </menu>
