@@ -11,16 +11,22 @@ import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockDialogFragment;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.name.Named;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ZoomFragment extends RoboSherlockDialogFragment {
 
 	@Inject
-	private Provider<ImageLoader>	providerForImageLoader;
+	private Provider<ImageLoader>			providerForImageLoader;
+
+	@Inject
+	@Named("WithoutDiscCache")
+	protected Provider<DisplayImageOptions>	providerForDisplayImageOptions;
 
 	@Inject
 	@URLFor5DaysImage
-	protected String				URLFor5DaysImage;
+	protected String						URLFor5DaysImage;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
@@ -30,8 +36,9 @@ public class ZoomFragment extends RoboSherlockDialogFragment {
 		final ImageView imageview = (ImageView) v.findViewById(R.id.zoom);
 		final ImageLoader imageloader = providerForImageLoader.get();
 		final String url = URLFor5DaysImage + symbol.toLowerCase();
+		final DisplayImageOptions options = providerForDisplayImageOptions.get();
 
-		imageloader.displayImage(url, imageview);
+		imageloader.displayImage(url, imageview, options);
 
 		return v;
 	}

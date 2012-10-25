@@ -43,7 +43,7 @@ import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
 import at.mikemitterer.tutorial.fragments.exception.CreationOfBundleNotPossible;
 import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
-import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
+import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
 import at.mikemitterer.tutorial.fragments.view.bignames.BigNamesActivity;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFactory;
@@ -66,6 +66,9 @@ public class DetailsActivity extends RoboSherlockFragmentActivity /* implements 
 	@Inject
 	protected ToggleLinearLayoutFactory	toggleLinearLayoutFactory;
 
+	@Inject
+	protected MinimalStockInfoFactory	minimalStockInfoFactory;
+
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,7 +87,7 @@ public class DetailsActivity extends RoboSherlockFragmentActivity /* implements 
 		//viewer.updateUrl(url);
 		MinimalStockInfoTO minimalStockInfoTO;
 		try {
-			minimalStockInfoTO = StockInfoUtil.createMinimalStockInfo(bundle);
+			minimalStockInfoTO = minimalStockInfoFactory.create(bundle);
 			eventbus.fire(minimalStockInfoTO);
 		}
 		catch (final CreationOfBundleNotPossible e) {

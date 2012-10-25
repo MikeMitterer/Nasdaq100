@@ -34,7 +34,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import roboguice.event.Observes;
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -53,42 +52,44 @@ import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
 
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.name.Named;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 
 public class StockInfoFragment extends RoboSherlockFragment {
 	private static Logger	logger	= LoggerFactory.getLogger(StockInfoFragment.class.getSimpleName());
-	private ImageLoader		imageloader;
 
 	public interface OnShowMoreListener {
 		public void onShowMoreSelect();
 	}
 
-	private ViewGroup				viewer			= null;
-	private ImageView				imageview		= null;
-	private String					urlForStockInfo	= "";
+	private ViewGroup						viewer			= null;
+	private ImageView						imageview		= null;
+	private String							urlForStockInfo	= "";
 
 	@Inject
-	protected ZoomFragmentFactory	zoomfragmentfactory;
+	protected ZoomFragmentFactory			zoomfragmentfactory;
 
 	@Inject
 	@URLFor5DaysImage
-	protected String				URLFor5DaysImage;
+	protected String						URLFor5DaysImage;
 
-	private String					currentSymbol	= null;
+	@Inject
+	protected Provider<ImageLoader>			providerForImageLoader;
 
-	@Override
-	public void onAttach(final Activity activity) {
-		super.onAttach(activity);
-	}
+	@Inject
+	@Named("WithoutDiscCache")
+	protected Provider<DisplayImageOptions>	providerForDisplayImageOptions;
+
+	private String							currentSymbol	= null;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		viewer = (ViewGroup) inflater.inflate(R.layout.stockinfo, container, false);
 		imageview = (ImageView) viewer.findViewById(R.id.stockinfo);
-
-		imageloader = ImageLoader.getInstance();
 
 		return viewer;
 	}
@@ -97,23 +98,12 @@ public class StockInfoFragment extends RoboSherlockFragment {
 	public void onActivityCreated(final Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		Bundle bundle = getArguments();
-		if (bundle == null) {
-			bundle = getActivity().getIntent().getExtras();
-		}
-		currentSymbol = null; // TODO Beschissene Lösung...
-		if (bundle != null) {
-			//final String url = bundle.getString("url");
-			currentSymbol = bundle.getString("symbol");
-
-			updateStockInfo(currentSymbol);
-		}
-
+		//currentSymbol = null; // TODO Beschissene Lösung...
 		imageview.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(final View v) {
-				if (currentSymbol != null) {
+				if (getCurrentSymbol() != null) { // StockInfoFragment.this.currentSymbol 
 					final FragmentTransaction ft = getFragmentManager().beginTransaction();
 					final Fragment prev = getFragmentManager().findFragmentByTag("dialog");
 					if (prev != null) {
@@ -160,6 +150,11 @@ public class StockInfoFragment extends RoboSherlockFragment {
 	//---------------------------------------------------------------------------------------------
 	// private
 	//---------------------------------------------------------------------------------------------
+
+	private String getCurrentSymbol() {
+		return currentSymbol;
+	}
+
 	private void updateStockInfo(final String symbol) {
 		ThreadUtil.logThreadSignature();
 
@@ -169,7 +164,11 @@ public class StockInfoFragment extends RoboSherlockFragment {
 			urlForStockInfo = URLFor5DaysImage + symbol.toLowerCase();
 			//url = "http://www.mikemitterer.at/fileadmin/_temp_/nasdaq100/altr.png";
 
-			imageloader.loadImage(getActivity(), urlForStockInfo, new ImageLoadingListener() {
+			final ImageLoader imageloader = providerForImageLoader.get();
+			logger.debug("DiscCacheClass depends on the settings we made in MainModule... ({})", imageloader.getDiscCache().getClass().getSimpleName());
+
+			final DisplayImageOptions options = providerForDisplayImageOptions.get();
+			imageloader.loadImage(getActivity(), urlForStockInfo, options, new ImageLoadingListener() {
 				@Override
 				public void onLoadingStarted() {
 					logger.debug("Start loading");

@@ -14,7 +14,9 @@ public final class R {
         public static final int slide_out=0x7f040002;
     }
     public static final class array {
-        public static final int roboguice_modules=0x7f0d0000;
+        public static final int listLanguages=0x7f0d0000;
+        public static final int listLanguagesValues=0x7f0d0001;
+        public static final int roboguice_modules=0x7f0d0002;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -1010,6 +1012,7 @@ containing a value of this type.
         public static final int list_percent=0x7f06003b;
         public static final int list_symbol=0x7f060039;
         public static final int list_weighting=0x7f06003a;
+        public static final int menu_clear_cache=0x7f06004c;
         public static final int menu_show_settings=0x7f060048;
         public static final int menu_sort_by_symbol=0x7f06004a;
         public static final int menu_sort_by_weighting=0x7f06004b;
@@ -1017,7 +1020,7 @@ containing a value of this type.
         public static final int showCustom=0x7f060008;
         public static final int showHome=0x7f060005;
         public static final int showTitle=0x7f060007;
-        public static final int show_stockinfo=0x7f06004c;
+        public static final int show_stockinfo=0x7f06004d;
         public static final int spinner=0x7f060036;
         public static final int spinnerframe=0x7f060035;
         public static final int stockinfo=0x7f060041;
@@ -1123,6 +1126,7 @@ containing a value of this type.
         public static final int hello=0x7f0b000f;
         public static final int list_item_percent=0x7f0b0015;
         public static final int logo_description=0x7f0b001a;
+        public static final int menu_clear_cache=0x7f0b001b;
         public static final int menu_show_settings=0x7f0b0012;
         public static final int menu_show_stockinfo=0x7f0b0011;
         public static final int menu_sort_by_symbol=0x7f0b0013;
@@ -1131,6 +1135,10 @@ containing a value of this type.
         public static final int placeholder_id=0x7f0b0016;
         public static final int placeholder_symbol=0x7f0b0017;
         public static final int placeholder_weighting=0x7f0b0019;
+        public static final int prefs_language_settings=0x7f0b001c;
+        public static final int prefs_language_wikilinks=0x7f0b001f;
+        public static final int prefs_languages_summary=0x7f0b001e;
+        public static final int prefs_languages_title=0x7f0b001d;
     }
     public static final class style {
         public static final int DialogWindowTitle_Sherlock=0x7f0c0036;

@@ -29,6 +29,7 @@
             android:title="@string/menu_sort_by_weighting"
             android:visible="true">
         </item>
+        <item android:id="@+id/menu_clear_cache" android:title="@string/menu_clear_cache" android:enabled="true" android:visible="true" android:showAsAction="never|collapseActionView"></item>
     </group>
 
 </menu>

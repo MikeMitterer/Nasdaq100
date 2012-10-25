@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Language Settings" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/prefs_language_settings" >
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="hallo1"
@@ -11,5 +12,13 @@
             android:key="hallo2"
             android:summary="Play sound on adds and updates"
             android:title="Sound" />
+
+        <ListPreference
+            android:defaultValue="auto"
+            android:dialogTitle="@string/prefs_languages_title"
+            android:entries="@array/listLanguages"
+            android:entryValues="@array/listLanguagesValues"
+            android:summary="@string/prefs_languages_summary" android:title="@string/prefs_language_wikilinks" android:key="language"/>
     </PreferenceCategory>
+
 </PreferenceScreen>

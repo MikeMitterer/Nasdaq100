@@ -13,6 +13,8 @@ import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
 import at.mikemitterer.tutorial.fragments.di.annotation.SDKVersion;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLImageServer;
+import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
+import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactoryImpl;
 import at.mikemitterer.tutorial.fragments.view.bignames.ImageListAdapter;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutAnimated;
@@ -28,6 +30,7 @@ import com.google.inject.Provider;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
+import com.google.inject.name.Named;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -46,6 +49,7 @@ public class MainModule extends AbstractModule {
 
 	private final static String	URL_IMAGE_SERVER	= "http://www.mikemitterer.at/fileadmin/_temp_/nasdaq100";
 	private final static String	URL_FOR_STOCKINFO	= "http://chart.finance.yahoo.com/c/3m/d/";
+	private final static String	CHACHE_DIR			= "Nasdaq100/Cache";
 
 	@Override
 	// RoboGuice calls configure twice - bug or feature, not really clear...
@@ -74,6 +78,7 @@ public class MainModule extends AbstractModule {
 
 		// Factories
 		bind(ZoomFragmentFactory.class).to(ZoomFragmentFactoryImpl.class);
+		bind(MinimalStockInfoFactory.class).to(MinimalStockInfoFactoryImpl.class);
 
 		// Version specific!
 		logger.debug("OS specifiv configuration. Platform: {}, API-Level: {}", Build.VERSION.RELEASE, Build.VERSION.SDK_INT);
@@ -123,7 +128,7 @@ public class MainModule extends AbstractModule {
 
 	@Provides
 	@Singleton
-	DisplayImageOptions provideDisplayImageOptions() {
+	DisplayImageOptions provideDisplayImageOptionsDefault() {
 		final DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
 				.showStubImage(R.drawable.indicator)
 				.showImageForEmptyUri(R.drawable.stub)
@@ -138,8 +143,22 @@ public class MainModule extends AbstractModule {
 
 	@Provides
 	@Singleton
+	@Named("WithoutDiscCache")
+	DisplayImageOptions provideDisplayImageOptionsWithoutDiscCache() {
+		final DisplayImageOptions options = new DisplayImageOptions.Builder()
+				.showStubImage(R.drawable.indicator)
+				.showImageForEmptyUri(R.drawable.stub)
+				.cacheInMemory()
+				.imageScaleType(ImageScaleType.EXACTLY)
+				.build();
+
+		return options;
+	}
+
+	@Provides
+	@Singleton
 	ImageLoaderConfiguration provideImageLoaderConfiguration(final Application context, final Provider<DisplayImageOptions> providerForDisplayOptions) {
-		final File cacheDir = StorageUtils.getOwnCacheDirectory(context, "Nasdaq100/Cache");
+		final File cacheDir = StorageUtils.getOwnCacheDirectory(context, CHACHE_DIR);
 
 		// This configuration tuning is custom. You can tune every option, you may tune some of them, 
 		// or you can create default configuration by

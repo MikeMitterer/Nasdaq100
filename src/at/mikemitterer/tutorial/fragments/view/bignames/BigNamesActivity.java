@@ -34,36 +34,39 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import roboguice.event.EventManager;
-import roboguice.event.Observes;
 import roboguice.inject.ContentView;
 import android.content.Intent;
 import android.os.Bundle;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.events.OnItemClicked;
+import at.mikemitterer.tutorial.fragments.events.PreferencesChanged;
 import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
 import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
 import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
-import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
-import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
-import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactory;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 @ContentView(R.layout.main_fragment)
 // Either single-pane or multi-pane
 public class BigNamesActivity extends RoboSherlockFragmentActivity {
 
-	private static Logger	logger	= LoggerFactory.getLogger(BigNamesActivity.class.getSimpleName());
+	private static Logger			logger	= LoggerFactory.getLogger(BigNamesActivity.class.getSimpleName());
 
 	@Inject
-	protected EventManager	eventbus;
+	protected EventManager			eventbus;
 
 	@Inject
-	protected PrefsFactory	prefsFactory;
+	protected PrefsFactory			prefsFactory;
 
+	@Inject
+	protected Provider<ImageLoader>	providerForImageLoader;
+
+	//@Inject
+	//protected MinimalStockInfoFactory	minimalStockInfoFactory;
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,21 +74,21 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 	}
 
 	// Sent by BigNamesFragment
-	public void onItemClicked(@Observes final OnItemClicked event) {
-		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
-
-		final Bundle bundle = StockInfoUtil.createBundle(event.minimalstockinfo);
-
-		if (viewer == null || !viewer.isInLayout()) {
-			final Intent showContent = new Intent(getApplicationContext(), DetailsActivity.class);
-
-			showContent.putExtras(bundle);
-			startActivity(showContent);
-		}
-		else {
-			eventbus.fire(event.minimalstockinfo);
-		}
-	}
+	//	public void onItemClicked(@Observes final OnItemClicked event) {
+	//		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+	//
+	//		final Bundle bundle = minimalStockInfoFactory.createBundle(event.minimalstockinfo);
+	//
+	//		if (viewer == null || !viewer.isInLayout()) {
+	//			final Intent showContent = new Intent(getApplicationContext(), DetailsActivity.class);
+	//
+	//			showContent.putExtras(bundle);
+	//			startActivity(showContent);
+	//		}
+	//		else {
+	//			eventbus.fire(event.minimalstockinfo);
+	//		}
+	//	}
 
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
@@ -95,7 +98,7 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 			//eventbus.fire(new ShowStockInfo());
 			// When the button is clicked, launch an activity through this intent
 			final Intent launchPreferencesIntent = new Intent(this, prefsFactory.get());
-			startActivity(launchPreferencesIntent);
+			startActivityForResult(launchPreferencesIntent, 0);
 			return true;
 
 		case R.id.menu_sort_by_symbol:
@@ -110,9 +113,22 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 			eventbus.fire(new ShowStockInfoScreen());
 			return true;
 
+		case R.id.menu_clear_cache:
+			providerForImageLoader.get().clearDiscCache();
+			logger.debug("Disccache cleared...");
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case 0:
+			eventbus.fire(new PreferencesChanged());
+			break;
+		}
+	}
 }

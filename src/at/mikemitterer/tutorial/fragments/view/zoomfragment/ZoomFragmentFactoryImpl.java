@@ -7,6 +7,9 @@ import com.google.inject.assistedinject.Assisted;
 
 public class ZoomFragmentFactoryImpl implements ZoomFragmentFactory {
 
+	ZoomFragmentFactoryImpl() {
+	}
+
 	@Override
 	public ZoomFragment create(@Assisted final String symbol) {
 		final ZoomFragment zf = new ZoomFragment();

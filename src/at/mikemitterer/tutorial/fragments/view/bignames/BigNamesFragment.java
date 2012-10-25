@@ -35,6 +35,7 @@ import org.slf4j.LoggerFactory;
 
 import roboguice.event.EventManager;
 import roboguice.event.Observes;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -45,13 +46,14 @@ import android.view.View;
 import android.widget.ListView;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
-import at.mikemitterer.tutorial.fragments.events.OnItemClicked;
+import at.mikemitterer.tutorial.fragments.events.PreferencesChanged;
 import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
 import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
 import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 import at.mikemitterer.tutorial.fragments.model.provider.DataContract;
-import at.mikemitterer.tutorial.fragments.model.util.LanguageForURL;
-import at.mikemitterer.tutorial.fragments.model.util.StockInfoUtil;
+import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
+import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
+import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -61,29 +63,47 @@ import com.google.inject.Provider;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class BigNamesFragment extends RoboSherlockListFragment implements LoaderCallbacks<Cursor> {
-	private static Logger			logger		= LoggerFactory.getLogger(BigNamesFragment.class.getSimpleName());
+	private static Logger				logger		= LoggerFactory.getLogger(BigNamesFragment.class.getSimpleName());
 
-	private static final int		LIST_LOADER	= 0x01;
+	private static final int			LIST_LOADER	= 0x01;
 
-	private String					sortOrder	= Columns.StockInfo.ORDER_BY_SYMBOL;
+	private String						sortOrder	= Columns.StockInfo.ORDER_BY_SYMBOL;
 
 	@Inject
-	private EventManager			eventbus;
+	private EventManager				eventbus;
 
 	@Inject
 	@ForLogoList
 	// This is the Adapter being used to display the list's data.
-	protected CursorAdapter			mAdapter;
+	protected CursorAdapter				mAdapter;
 
 	@Inject
-	protected Provider<ImageLoader>	providerForImageLoader;
+	protected Provider<ImageLoader>		providerForImageLoader;
+
+	@Inject
+	protected MinimalStockInfoFactory	minimalStockInfoFactory;
 
 	@Override
 	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
 		final Cursor cursor = (Cursor) l.getAdapter().getItem(position);
 
 		// TODO Sprache richtig setzen
-		eventbus.fire(new OnItemClicked(StockInfoUtil.createMinimalStockInfo(cursor, LanguageForURL.GERMAN)));
+		//eventbus.fire(new OnItemClicked(minimalStockInfoFactory.create(cursor)));
+
+		final WebViewFragment viewer = (WebViewFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+
+		final Bundle bundle = minimalStockInfoFactory.createBundle(cursor);
+
+		if (viewer == null || !viewer.isInLayout()) {
+			final Intent showContent = new Intent(getActivity(), DetailsActivity.class);
+
+			showContent.putExtras(bundle);
+			startActivity(showContent);
+		}
+		else {
+			eventbus.fire(minimalStockInfoFactory.create(cursor));
+		}
+
 	}
 
 	@Override
@@ -162,18 +182,34 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
+
+		//		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		//		prefs.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener() {
+		//
+		//			@Override
+		//			public void onSharedPreferenceChanged(final SharedPreferences sharedPreferences, final String key) {
+		//				if (key.equalsIgnoreCase("language")) {
+		//					minimalStockInfoFactory.updateLanguage(getActivity());
+		//				}
+		//
+		//			}
+		//		});
 	}
 
 	@Override
 	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
-		//final MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.home, menu);
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 
-	//---------------------------------------------------------------------------------------------
-	// private
-	//---------------------------------------------------------------------------------------------
+	public void onPreferecesChanged(@Observes final PreferencesChanged event) {
+		minimalStockInfoFactory.updateLanguage(getActivity());
+		final int position = getSelectedItemPosition();
+		if (position >= 0) {
+			final Cursor cursor = (Cursor) getListView().getAdapter().getItem(position);
+			eventbus.fire(minimalStockInfoFactory.create(cursor));
+		}
+	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(final int arg0, final Bundle arg1) {
@@ -203,7 +239,7 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 		// TODO Sprache richtig setzten
 		if (cursor != null && cursor.getCount() > 0) {
 			cursor.moveToFirst();
-			eventbus.fire(StockInfoUtil.createMinimalStockInfo(cursor, LanguageForURL.GERMAN));
+			eventbus.fire(minimalStockInfoFactory.create(cursor));
 		}
 	}
 
@@ -216,5 +252,9 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 		mAdapter.swapCursor(null);
 
 	}
+
+	//---------------------------------------------------------------------------------------------
+	// private
+	//---------------------------------------------------------------------------------------------
 
 }

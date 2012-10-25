@@ -15,5 +15,10 @@
     <string name="placeholder_company">Check Point</string>
     <string name="placeholder_weighting">12.20</string>
     <string name="logo_description">Company logo</string>
+    <string name="menu_clear_cache">Clear cache</string>
+    <string name="prefs_language_settings">Language settings</string>
+    <string name="prefs_languages_title">Choose language option</string>
+    <string name="prefs_languages_summary">Please choose the language for the Wikipedia page. Default ist the language set on your phone.</string>
+    <string name="prefs_language_wikilinks">Wikipedia links</string>
 
 </resources>
