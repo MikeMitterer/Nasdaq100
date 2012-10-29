@@ -1,6 +1,5 @@
 package at.mikemitterer.tutorial.fragments.model.util;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import at.mikemitterer.tutorial.fragments.exception.CreationOfBundleNotPossible;
@@ -15,5 +14,5 @@ public interface MinimalStockInfoFactory {
 
 	public Bundle createBundle(final MinimalStockInfoTO minimalstockinfo);
 
-	public void updateLanguage(final Context context);
+	//public void updateLanguage(final Context context);
 }

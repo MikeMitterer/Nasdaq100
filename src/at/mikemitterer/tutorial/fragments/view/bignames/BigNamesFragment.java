@@ -203,7 +203,7 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	}
 
 	public void onPreferecesChanged(@Observes final PreferencesChanged event) {
-		minimalStockInfoFactory.updateLanguage(getActivity());
+		//minimalStockInfoFactory.updateLanguage(getActivity());
 		final int position = getSelectedItemPosition();
 		if (position >= 0) {
 			final Cursor cursor = (Cursor) getListView().getAdapter().getItem(position);

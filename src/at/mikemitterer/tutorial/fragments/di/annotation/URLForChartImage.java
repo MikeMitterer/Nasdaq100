@@ -10,5 +10,5 @@ import com.google.inject.BindingAnnotation;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER })
 @BindingAnnotation
-public @interface URLFor5DaysImage {
+public @interface URLForChartImage {
 }

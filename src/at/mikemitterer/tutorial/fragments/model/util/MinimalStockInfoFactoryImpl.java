@@ -1,36 +1,33 @@
 package at.mikemitterer.tutorial.fragments.model.util;
 
-import java.util.Locale;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import at.mikemitterer.tutorial.fragments.exception.CreationOfBundleNotPossible;
 import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 public class MinimalStockInfoFactoryImpl implements MinimalStockInfoFactory {
 
-	private String	languageFromPrefs;
+	private final Provider<LanguageForURL>	providerForLanguageForURL;
 
 	@Inject
-	MinimalStockInfoFactoryImpl(final Context context) {
-		updateLanguage(context);
+	MinimalStockInfoFactoryImpl(final Provider<LanguageForURL> providerForLanguageForURL) {
+		this.providerForLanguageForURL = providerForLanguageForURL;
 	}
 
 	@Override
 	public MinimalStockInfoTO create(final Cursor cursor) {
 		final MinimalStockInfoTO stockinfo = new MinimalStockInfoTO();
 		final String url_fallback = Uri.parse(cursor.getString(Columns.StockInfo.INDEX.URL_EN.ordinal())).toString();
+		final LanguageForURL lfu = providerForLanguageForURL.get();
 
 		stockinfo.setSymbol(cursor.getString(Columns.StockInfo.INDEX.SYMBOL.ordinal()));
 
-		stockinfo.setUrl(Uri.parse(getLanguageForURL() == LanguageForURL.ENGLISH
+		stockinfo.setUrl(Uri.parse(lfu == LanguageForURL.ENGLISH
 				? cursor.getString(Columns.StockInfo.INDEX.URL_EN.ordinal())
 				: cursor.getString(Columns.StockInfo.INDEX.URL_DE.ordinal()))
 				.toString());
@@ -79,28 +76,8 @@ public class MinimalStockInfoFactoryImpl implements MinimalStockInfoFactory {
 		return bundle;
 	}
 
-	@Override
-	public void updateLanguage(final Context context) {
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		languageFromPrefs = prefs.getString("language", "auto");
-	}
-
 	//---------------------------------------------------------------------------------------------
 	// private
 	//---------------------------------------------------------------------------------------------
 
-	private LanguageForURL getLanguageForURL() {
-		final String languageSystem = Locale.getDefault().getLanguage();
-
-		if (languageFromPrefs.equalsIgnoreCase("auto")) {
-			if (languageSystem.equalsIgnoreCase("de")) {
-				return LanguageForURL.GERMAN;
-			}
-		}
-		if (languageFromPrefs.equalsIgnoreCase("de")) {
-			return LanguageForURL.GERMAN;
-		}
-
-		return LanguageForURL.ENGLISH;
-	}
 }

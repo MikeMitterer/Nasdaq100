@@ -3,28 +3,37 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_dark"
     android:focusable="false"
     android:orientation="vertical" >
 
-    <!-- TextView
+    <!--
+         TextView
         android:id="@+id/color_name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/red"
         android:textAppearance="?android:attr/textAppearanceLarge" 
-        android:layout_weight="1"/-->
+        android:layout_weight="1"/
+    -->
+
+    <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_dark"
+        android:paddingBottom="@dimen/default_padding"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_dark" />
 
     <ImageView
         android:id="@+id/stockinfo"
         android:layout_width="wrap_content"
-        android:layout_height="0dip"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:clickable="true"
-        android:contentDescription="Placeholder Image"
         android:padding="@dimen/default_padding"
         android:src="@drawable/stub" />
-        
+
 </LinearLayout>

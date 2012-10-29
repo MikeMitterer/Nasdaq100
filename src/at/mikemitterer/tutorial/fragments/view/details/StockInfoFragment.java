@@ -44,8 +44,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 import at.mikemitterer.tutorial.fragments.R;
-import at.mikemitterer.tutorial.fragments.di.annotation.URLFor5DaysImage;
+import at.mikemitterer.tutorial.fragments.di.annotation.URLForChartImage;
 import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
+import at.mikemitterer.tutorial.fragments.model.util.LanguageForURL;
 import at.mikemitterer.tutorial.fragments.model.util.ThreadUtil;
 import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragment;
 import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
@@ -74,11 +75,14 @@ public class StockInfoFragment extends RoboSherlockFragment {
 	protected ZoomFragmentFactory			zoomfragmentfactory;
 
 	@Inject
-	@URLFor5DaysImage
+	@URLForChartImage
 	protected String						URLFor5DaysImage;
 
 	@Inject
 	protected Provider<ImageLoader>			providerForImageLoader;
+
+	@Inject
+	private Provider<LanguageForURL>		providerForLanguageForURL;
 
 	@Inject
 	@Named("WithoutDiscCache")
@@ -159,10 +163,14 @@ public class StockInfoFragment extends RoboSherlockFragment {
 		ThreadUtil.logThreadSignature();
 
 		if (viewer != null) {
-			//final ImageView imageview = (ImageView) viewer.findViewById(R.id.stockinfo);
+			final LanguageForURL lfu = providerForLanguageForURL.get();
 
-			urlForStockInfo = URLFor5DaysImage + symbol.toLowerCase();
-			//url = "http://www.mikemitterer.at/fileadmin/_temp_/nasdaq100/altr.png";
+			urlForStockInfo = URLFor5DaysImage.
+					replaceAll("\\{symbol\\}", symbol.toLowerCase()).
+					replaceAll("\\{region\\}", lfu.getRegion()).
+					replaceAll("\\{langex\\}", lfu.getLangEx());
+
+			logger.debug("URL for chart-image: {}", urlForStockInfo);
 
 			final ImageLoader imageloader = providerForImageLoader.get();
 			logger.debug("DiscCacheClass depends on the settings we made in MainModule... ({})", imageloader.getDiscCache().getClass().getSimpleName());
@@ -214,5 +222,4 @@ public class StockInfoFragment extends RoboSherlockFragment {
 		}
 		logger.debug("Update Info in ColorFragment for {}", symbol);
 	}
-
 }
