@@ -53,7 +53,7 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 public class MainModule extends AbstractModule {
 	private static Logger		logger					= LoggerFactory.getLogger(MainModule.class.getSimpleName());
 
-	private final static String	URL_IMAGE_SERVER		= "http://www.mikemitterer.at/fileadmin/_temp_/nasdaq100";
+	private final static String	URL_IMAGE_SERVER		= "https://raw.github.com/MikeMitterer/Nasdaq100/master/doc/resources/images";
 
 	// More infos about the URL: http://code.google.com/p/yahoo-finance-managed/wiki/miscapiImageDownload
 	//private final static String	URL_FOR_CHARTIMAGE	= "http://chart.finance.yahoo.com/c/3m/d/";
