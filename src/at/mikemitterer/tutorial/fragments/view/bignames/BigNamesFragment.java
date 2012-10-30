@@ -52,6 +52,7 @@ import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
 import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 import at.mikemitterer.tutorial.fragments.model.provider.DataContract;
 import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
+import at.mikemitterer.tutorial.fragments.model.util.SoundManager;
 import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
 import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 
@@ -83,12 +84,14 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	@Inject
 	protected MinimalStockInfoFactory	minimalStockInfoFactory;
 
+	@Inject
+	protected Provider<SoundManager>	providerForSoundManager;
+
 	@Override
 	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
 		final Cursor cursor = (Cursor) l.getAdapter().getItem(position);
 
-		// TODO Sprache richtig setzen
-		//eventbus.fire(new OnItemClicked(minimalStockInfoFactory.create(cursor)));
+		providerForSoundManager.get().playClick();
 
 		final WebViewFragment viewer = (WebViewFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
 

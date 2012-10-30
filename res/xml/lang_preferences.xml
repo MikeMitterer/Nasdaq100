@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="@string/prefs_language_settings" >
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="hallo1"
-            android:summary="Hallo assksk"
-            android:title="Vibrate" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="hallo2"
-            android:summary="Play sound on adds and updates"
-            android:title="Sound" />
-
+    <PreferenceCategory android:title="@string/prefs_header_language_settings" >
         <ListPreference
             android:defaultValue="auto"
             android:dialogTitle="@string/prefs_languages_title"

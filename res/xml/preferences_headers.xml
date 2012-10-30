@@ -3,12 +3,12 @@
 
     <header
         android:fragment="at.mikemitterer.tutorial.fragments.view.prefs.PrefsUserFragment"
-        android:summary="Home Field Advantage user settings"
-        android:title="User Settings" />
+        android:summary="@string/prefs_header_user_settings"
+        android:title="@string/prefs_header_user_settings" />
 
     <header
         android:fragment="at.mikemitterer.tutorial.fragments.view.prefs.PrefsLangFragment"
-        android:summary="Language specific settings"
-        android:title="Language Settings" />
+        android:summary="@string/prefs_header_language_summary"
+        android:title="@string/prefs_header_language_settings" />
     
 </preference-headers> 

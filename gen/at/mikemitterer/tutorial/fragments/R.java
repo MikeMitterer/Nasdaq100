@@ -1358,6 +1358,10 @@ containing a value of this type.
         public static final int placeholder_id=0x7f0b0016;
         public static final int placeholder_symbol=0x7f0b0017;
         public static final int placeholder_weighting=0x7f0b0019;
+        public static final int prefs_header_language_settings=0x7f0b0022;
+        public static final int prefs_header_language_summary=0x7f0b0023;
+        public static final int prefs_header_user_settings=0x7f0b0020;
+        public static final int prefs_header_user_summary=0x7f0b0021;
         public static final int prefs_language_settings=0x7f0b001c;
         public static final int prefs_language_wikilinks=0x7f0b001f;
         public static final int prefs_languages_summary=0x7f0b001e;

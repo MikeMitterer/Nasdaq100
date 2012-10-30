@@ -20,5 +20,8 @@
     <string name="prefs_languages_title">Choose language option</string>
     <string name="prefs_languages_summary">Please choose the language for the Wikipedia page. Default ist the language set on your phone.</string>
     <string name="prefs_language_wikilinks">Wikipedia links</string>
-
+	<string name="prefs_header_user_settings">User settings</string>
+	<string name="prefs_header_user_summary">Advantage user settings</string>
+	<string name="prefs_header_language_settings">Language Settings</string>
+	<string name="prefs_header_language_summary">Language specific settings</string>
 </resources>

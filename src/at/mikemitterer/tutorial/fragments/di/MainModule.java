@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import roboguice.RoboGuice;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.CursorAdapter;
 import at.mikemitterer.tutorial.fragments.R;
+import at.mikemitterer.tutorial.fragments.di.annotation.EnableLoggingForImageLoader;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
 import at.mikemitterer.tutorial.fragments.di.annotation.SDKVersion;
 import at.mikemitterer.tutorial.fragments.di.annotation.URLForChartImage;
@@ -21,6 +23,9 @@ import at.mikemitterer.tutorial.fragments.di.annotation.URLImageServer;
 import at.mikemitterer.tutorial.fragments.model.util.LanguageForURL;
 import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
 import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactoryImpl;
+import at.mikemitterer.tutorial.fragments.model.util.SoundManager;
+import at.mikemitterer.tutorial.fragments.model.util.SoundManagerFake;
+import at.mikemitterer.tutorial.fragments.model.util.SoundManagerImpl;
 import at.mikemitterer.tutorial.fragments.view.bignames.ImageListAdapter;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutAnimated;
@@ -78,6 +83,7 @@ public class MainModule extends AbstractModule {
 		bindConstant().annotatedWith(URLForChartImage.class).to(URL_FOR_CHARTIMAGE);
 		bindConstant().annotatedWith(URLForZoomChartImage.class).to(URL_FOR_ZOOM_CHARTIMAGE);
 		bindConstant().annotatedWith(SDKVersion.class).to(sdk);
+		bindConstant().annotatedWith(EnableLoggingForImageLoader.class).to(false);
 
 		// Provider
 
@@ -113,21 +119,6 @@ public class MainModule extends AbstractModule {
 
 		logger.debug("configuration done!");
 	}
-
-	//	@Provides
-	//	@Singleton
-	//	CRest provideCRest() {
-	//		final String endpoint = "http://test3.vmubuntu.mikemitterer.local:8080/api";
-	//		final List<String> consumes = new ArrayList<String>();
-	//
-	//		consumes.add("application/json");
-	//
-	//		final CRest crest = CRest
-	//				.property(MethodConfig.METHOD_CONFIG_DEFAULT_ENDPOINT, endpoint) // @EndPoint("http://localhost:8080/partnerzodiac/rest")
-	//				.property(MethodConfig.METHOD_CONFIG_DEFAULT_CONSUMES, consumes) // @Consumes("application/json")
-	//				.build();
-	//		return crest;
-	//	}
 
 	@Provides
 	@Singleton
@@ -170,14 +161,15 @@ public class MainModule extends AbstractModule {
 
 	@Provides
 	@Singleton
-	ImageLoaderConfiguration provideImageLoaderConfiguration(final Application context, final Provider<DisplayImageOptions> providerForDisplayOptions) {
+	ImageLoaderConfiguration provideImageLoaderConfiguration(final Application context, final Provider<DisplayImageOptions> providerForDisplayOptions,
+			@EnableLoggingForImageLoader final boolean logging) {
 		final File cacheDir = StorageUtils.getOwnCacheDirectory(context, CHACHE_DIR);
 
 		// This configuration tuning is custom. You can tune every option, you may tune some of them, 
 		// or you can create default configuration by
 		//  ImageLoaderConfiguration.createDefault(this);
 		// method.
-		final ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+		final ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(context)
 				//.memoryCacheExtraOptions(200, 200)
 				.threadPoolSize(3)
 				.threadPriority(Thread.NORM_PRIORITY - 2)
@@ -185,10 +177,13 @@ public class MainModule extends AbstractModule {
 				.denyCacheImageMultipleSizesInMemory()
 				.discCache(new UnlimitedDiscCache(cacheDir)) // You can pass your own disc cache implementation
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())
-				.defaultDisplayImageOptions(providerForDisplayOptions.get())
-				.enableLogging() // Not necessary in common
-				.build();
+				.defaultDisplayImageOptions(providerForDisplayOptions.get());
 
+		if (logging) {
+			builder.enableLogging();
+		}
+
+		final ImageLoaderConfiguration config = builder.build();
 		return config;
 	}
 
@@ -208,5 +203,19 @@ public class MainModule extends AbstractModule {
 		}
 
 		return LanguageForURL.ENGLISH;
+	}
+
+	@Provides
+	SoundManager provideSoundManager(final Context context, final SharedPreferences prefs) {
+		final boolean playSound = prefs.getBoolean("soundPreference", false);
+		final SoundManager soundmanager;
+
+		if (playSound) {
+			soundmanager = RoboGuice.getInjector(context).getInstance(SoundManagerImpl.class);
+		}
+		else {
+			soundmanager = RoboGuice.getInjector(context).getInstance(SoundManagerFake.class);
+		}
+		return soundmanager;
 	}
 }
