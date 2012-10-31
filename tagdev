@@ -1,7 +1,10 @@
 #/bin/sh
 set +m
 #------------------------------------------------------------------------------
+#
 # Set default device for ADB
+# For more infos: http://www.alittlemadness.com/2010/06/15/android-ant-builds-targeting-a-specific-device/
+#
 #------------------------------------------------------------------------------
 
 DEVICE=$1
