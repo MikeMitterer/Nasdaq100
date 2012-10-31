@@ -7,7 +7,10 @@
             android:dialogTitle="@string/prefs_languages_title"
             android:entries="@array/listLanguages"
             android:entryValues="@array/listLanguagesValues"
-            android:summary="@string/prefs_languages_summary" android:title="@string/prefs_language_wikilinks" android:key="language"/>
+            android:key="language"
+            android:summary="@string/prefs_languages_summary"
+            android:title="@string/prefs_language_wikilinks" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

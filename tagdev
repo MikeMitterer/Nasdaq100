@@ -1,0 +1,88 @@
+#/bin/sh
+set +m
+#------------------------------------------------------------------------------
+# Set default device for ADB
+#------------------------------------------------------------------------------
+
+DEVICE=$1
+TEMPFILE="tmp.devices.$RANDOM"
+
+setDefaultDevice() {
+	export ANDROID_SERIAL=$DEVICE
+	checkExport
+}
+
+setAliasDevice() {
+	SEARCHFOR=$1
+	DEVICE=`listDevices | grep -i "$SEARCHFOR=" | sed "s/$SEARCHFOR=//g"`
+	#echo $DEVICE
+	export ANDROID_SERIAL=$DEVICE
+	checkExport
+}
+
+listDevices() {
+	adb devices	| grep -i device$ | sed -e 's/[^0-9a-zA-Z]/=/g' | sed 's/=device//' > ${TEMPFILE}
+	sed = ${TEMPFILE} | sed 'N; s/^/device/; s/ *\(.\{6,\}\)\n/\1=/'
+	rm -f ${TEMPFILE}
+}
+
+checkEnvironment() {
+	checkExport
+}
+
+checkExport() {
+	set | grep -i ^android_serial	
+}
+
+#------------------------------------------------------------------------------
+# Options
+#
+
+usage()
+    {
+    echo "Usage: . ./`basename $0` [options] <device|alias>"
+    echo -e "\t            Set the default device for adb"
+    echo -e "\t            Be aware of the . (dot) in front of the command"
+    echo -e "\t            to avoid a subshell\n"
+    echo -e "\t            Sample: . ./tagdev --alias device1\n"
+    echo -e "\t--alias     Use devic[1-x] instead of serial number"
+    echo -e "\t--list      Lists devices attached"
+    echo -e "\t--check     Displays the environment setting for ANDROID_SERIAL"
+    echo -e "\t--help      This message\n"
+    }
+
+
+case "$DEVICE" in 
+    help|-help|--help)
+		usage
+	;;
+	
+    list|-list|--list)
+		listDevices
+	;;
+
+    check|-check|--check)
+		checkEnvironment
+	;;
+
+    alias|-alias|--alias)
+	if test "$2" != ""
+	then
+	    setAliasDevice $2
+	else
+	    usage
+	fi    
+		
+	;;
+	
+    *)
+	if test "$DEVICE" != ""
+	then
+	    setDefaultDevice
+	else
+	    usage
+	fi
+	;;
+
+esac    
+#exit 0

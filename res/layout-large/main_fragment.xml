@@ -8,7 +8,7 @@
 
     <fragment
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tutlist_fragment"
+        android:id="@+id/bignames_fragment"
         android:name="at.mikemitterer.tutorial.fragments.view.bignames.BigNamesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

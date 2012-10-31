@@ -21,6 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/gray_dark"
+        android:contentDescription="@string/stockinfo_spacer"
         android:paddingBottom="@dimen/default_padding"
         android:scaleType="fitXY"
         android:src="@android:drawable/divider_horizontal_dark" />
@@ -28,11 +29,12 @@
     <ImageView
         android:id="@+id/stockinfo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:clickable="true"
+        android:contentDescription="@string/stockinfo_image"
         android:padding="@dimen/default_padding"
         android:src="@drawable/stub" />
 

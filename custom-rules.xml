@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="android-custom-rules" xmlns:artifact="antlib:org.apache.maven.artifact.ant" basedir="." default="help">
+	<property name="asl.dir" value="/Volumes/programming/AntLibrary" />
+
+	<property file="local.properties" />
+	
+	<import file="${asl.dir}/asl-settings.xml"/>
+	
+	<import file="${asl.dir}/asl-help.xml"/>
+	<!--import file="${asl.dir}/asl-java.xml"/-->
+	<import file="${asl.dir}/asl-maven.xml"/>
+	<import file="${asl.dir}/asl-android.xml"/>
+	<!--import file="${asl.dir}/asl-junit.xml"/-->
+	<import file="${asl.dir}/asl-tools.xml"/>
+	<!--import file="${asl.dir}/asl-git.xml"/-->
+	
+	<target name="-maven.resolve.clean.after">
+		<delete verbose="true">
+			<fileset file="${basedir}/libs/slf4j-api-*.jar"/>
+		</delete>
+	</target>
+
+</project>

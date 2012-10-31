@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string
-        name="hello">Hello World, TutListActivity!!</string>
-    <string
-        name="app_name">Nasdaq100</string>
-
+    <string name="app_name">Nasdaq100</string>
     <string name="menu_show_stockinfo">Stockinfo</string>
     <string name="menu_show_settings">Settings</string>
     <string name="menu_sort_by_symbol">Sort by symbol</string>
@@ -20,8 +16,11 @@
     <string name="prefs_languages_title">Choose language option</string>
     <string name="prefs_languages_summary">Please choose the language for the Wikipedia page. Default ist the language set on your phone.</string>
     <string name="prefs_language_wikilinks">Wikipedia links</string>
-	<string name="prefs_header_user_settings">User settings</string>
-	<string name="prefs_header_user_summary">Advantage user settings</string>
-	<string name="prefs_header_language_settings">Language Settings</string>
-	<string name="prefs_header_language_summary">Language specific settings</string>
+    <string name="prefs_header_user_settings">User settings</string>
+    <string name="prefs_header_user_summary">Advantage user settings</string>
+    <string name="prefs_header_language_settings">Language Settings</string>
+    <string name="prefs_header_language_summary">Language specific settings</string>
+    <string name="stockinfo_spacer">Spacer on top of fragment</string>
+    <string name="stockinfo_image">Chart</string>
+
 </resources>

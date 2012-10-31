@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
         android:id="@+id/show_stockinfo"
         android:enabled="true"
         android:icon="@drawable/ic_action_line_chart"
+        android:menuCategory="container"
+        android:orderInCategory="1"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_show_stockinfo"
-        android:visible="true" android:menuCategory="container" android:orderInCategory="1">
-</item>
+        android:visible="true">
+    </item>
+
 </menu>
