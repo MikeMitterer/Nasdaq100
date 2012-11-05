@@ -14,3 +14,6 @@
    The application icon (http://de.fotolia.com/id/38423697) and the 
    background image (http://de.fotolia.com/id/40304666) are based on files
    from Fotolia and protected by their respective licenses.
+   
+   All images under doc/resources/images are taken from Wikipedia (EN+DE) and protected
+   by their respective licenses.
