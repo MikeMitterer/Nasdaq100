@@ -10,6 +10,7 @@
     <string name="placeholder_symbol">CHKP</string>
     <string name="placeholder_company">Check Point</string>
     <string name="placeholder_weighting">12.20</string>
+    <string name="placeholder_version">1.0</string>
     <string name="logo_description">Company logo</string>
     <string name="menu_clear_cache">Clear cache</string>
     <string name="prefs_language_settings">Language settings</string>
@@ -22,5 +23,11 @@
     <string name="prefs_header_language_summary">Language specific settings</string>
     <string name="stockinfo_spacer">Spacer on top of fragment</string>
     <string name="stockinfo_image">Chart</string>
-
+    <string name="label_version">Version:</string>
+    <string name="label_copyright">Copyright:</string>
+    <string name="data_copyright">Michael Mitterer, IT-Consulting and Development Limited, Austrian Branch</string>
+    <string name="spacer">Space between Columns</string>
+	<string name="about_title">About Nasdaq100</string>
+	<string name="about_close">Close</string>
+	<string name="menu_about">About</string>
 </resources>

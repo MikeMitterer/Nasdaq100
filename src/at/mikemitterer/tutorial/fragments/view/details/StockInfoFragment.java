@@ -48,8 +48,8 @@ import at.mikemitterer.tutorial.fragments.di.annotation.URLForChartImage;
 import at.mikemitterer.tutorial.fragments.model.to.MinimalStockInfoTO;
 import at.mikemitterer.tutorial.fragments.model.util.LanguageForURL;
 import at.mikemitterer.tutorial.fragments.model.util.ThreadUtil;
-import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragment;
-import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
+import at.mikemitterer.tutorial.fragments.view.zoom.ZoomFragment;
+import at.mikemitterer.tutorial.fragments.view.zoom.ZoomFragmentFactory;
 
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
@@ -108,16 +108,16 @@ public class StockInfoFragment extends RoboSherlockFragment {
 			@Override
 			public void onClick(final View v) {
 				if (getCurrentSymbol() != null) { // StockInfoFragment.this.currentSymbol 
-					final FragmentTransaction ft = getFragmentManager().beginTransaction();
-					final Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-					if (prev != null) {
-						ft.remove(prev);
+					final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+					final Fragment prevDialog = getFragmentManager().findFragmentByTag("zoomdialog");
+					if (prevDialog != null) {
+						transaction.remove(prevDialog);
 					}
-					ft.addToBackStack(null);
+					transaction.addToBackStack(null);
 
 					// Create and show the dialog.
 					final ZoomFragment dialog = zoomfragmentfactory.create(currentSymbol);
-					dialog.show(ft, "dialog");
+					dialog.show(transaction, "zoomdialog");
 				}
 			}
 		});

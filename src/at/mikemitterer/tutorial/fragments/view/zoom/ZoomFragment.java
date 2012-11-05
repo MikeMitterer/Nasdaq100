@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.view.zoomfragment;
+package at.mikemitterer.tutorial.fragments.view.zoom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

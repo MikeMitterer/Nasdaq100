@@ -1,4 +1,4 @@
-package at.mikemitterer.tutorial.fragments.view.zoomfragment;
+package at.mikemitterer.tutorial.fragments.view.zoom;
 
 import com.google.inject.assistedinject.Assisted;
 

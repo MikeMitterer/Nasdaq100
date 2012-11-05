@@ -1,0 +1,16 @@
+=========================================================================
+==  Example NOTICE file for use with the Apache License, Version 2.0,  ==
+==  in this case for the Android App Nasdaq100.                        ==
+=========================================================================
+
+   Nasdaq100, Android Application
+   
+   Copyright 2012 Michael Mitterer, IT-Consulting and Development Limited,
+   Austrian Branch
+   
+   The project makes use of icons released in the AndroidIcons project
+   (http://www.androidicons.com/) and are released under their respective licenses.
+   
+   The application icon (http://de.fotolia.com/id/38423697) and the 
+   background image (http://de.fotolia.com/id/40304666) are based on files
+   from Fotolia and protected by their respective licenses.

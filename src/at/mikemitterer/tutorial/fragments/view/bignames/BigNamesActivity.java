@@ -38,6 +38,7 @@ import roboguice.inject.ContentView;
 import android.content.Intent;
 import android.os.Bundle;
 import at.mikemitterer.tutorial.fragments.R;
+import at.mikemitterer.tutorial.fragments.events.OnAboutClicked;
 import at.mikemitterer.tutorial.fragments.events.PreferencesChanged;
 import at.mikemitterer.tutorial.fragments.events.ShowStockInfoScreen;
 import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
@@ -116,6 +117,10 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 		case R.id.menu_clear_cache:
 			providerForImageLoader.get().clearDiscCache();
 			logger.debug("Disccache cleared...");
+			return true;
+
+		case R.id.menu_about:
+			eventbus.fire(new OnAboutClicked());
 			return true;
 		}
 

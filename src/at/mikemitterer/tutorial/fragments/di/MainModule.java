@@ -26,6 +26,8 @@ import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactoryImpl
 import at.mikemitterer.tutorial.fragments.model.util.SoundManager;
 import at.mikemitterer.tutorial.fragments.model.util.SoundManagerFake;
 import at.mikemitterer.tutorial.fragments.model.util.SoundManagerImpl;
+import at.mikemitterer.tutorial.fragments.view.about.AboutFragment;
+import at.mikemitterer.tutorial.fragments.view.about.AboutFragmentProvider;
 import at.mikemitterer.tutorial.fragments.view.bignames.ImageListAdapter;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayout;
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutAnimated;
@@ -33,8 +35,8 @@ import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutFa
 import at.mikemitterer.tutorial.fragments.view.linearlayout.ToggleLinearLayoutSimple;
 import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactory;
 import at.mikemitterer.tutorial.fragments.view.prefs.PrefsFactoryImpl;
-import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactory;
-import at.mikemitterer.tutorial.fragments.view.zoomfragment.ZoomFragmentFactoryImpl;
+import at.mikemitterer.tutorial.fragments.view.zoom.ZoomFragmentFactory;
+import at.mikemitterer.tutorial.fragments.view.zoom.ZoomFragmentFactoryImpl;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
@@ -86,6 +88,7 @@ public class MainModule extends AbstractModule {
 		bindConstant().annotatedWith(EnableLoggingForImageLoader.class).to(false);
 
 		// Provider
+		bind(AboutFragment.class).toProvider(AboutFragmentProvider.class);
 
 		// others
 		bind(CursorAdapter.class).annotatedWith(ForLogoList.class).to(ImageListAdapter.class);

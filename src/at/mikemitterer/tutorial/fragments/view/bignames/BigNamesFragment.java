@@ -38,6 +38,8 @@ import roboguice.event.Observes;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -46,6 +48,7 @@ import android.view.View;
 import android.widget.ListView;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
+import at.mikemitterer.tutorial.fragments.events.OnAboutClicked;
 import at.mikemitterer.tutorial.fragments.events.PreferencesChanged;
 import at.mikemitterer.tutorial.fragments.events.SortBySymbol;
 import at.mikemitterer.tutorial.fragments.events.SortByWeighting;
@@ -53,6 +56,7 @@ import at.mikemitterer.tutorial.fragments.model.provider.Columns;
 import at.mikemitterer.tutorial.fragments.model.provider.DataContract;
 import at.mikemitterer.tutorial.fragments.model.util.MinimalStockInfoFactory;
 import at.mikemitterer.tutorial.fragments.model.util.SoundManager;
+import at.mikemitterer.tutorial.fragments.view.about.AboutFragment;
 import at.mikemitterer.tutorial.fragments.view.details.DetailsActivity;
 import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 
@@ -86,6 +90,9 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 
 	@Inject
 	protected Provider<SoundManager>	providerForSoundManager;
+
+	@Inject
+	protected Provider<AboutFragment>	providerForAboutFragment;
 
 	@Override
 	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
@@ -212,6 +219,20 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 			final Cursor cursor = (Cursor) getListView().getAdapter().getItem(position);
 			eventbus.fire(minimalStockInfoFactory.create(cursor));
 		}
+	}
+
+	public void onAboutClicked(@Observes final OnAboutClicked event) {
+		final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		final Fragment prevDialog = getFragmentManager().findFragmentByTag("aboutdialog");
+
+		if (prevDialog != null) {
+			transaction.remove(prevDialog);
+		}
+		transaction.addToBackStack(null);
+
+		// Create and show the dialog.
+		final AboutFragment aboutdialog = providerForAboutFragment.get();
+		aboutdialog.show(transaction, "aboutdialog");
 	}
 
 	@Override
