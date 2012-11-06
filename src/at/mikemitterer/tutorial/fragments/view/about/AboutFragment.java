@@ -74,5 +74,6 @@ public class AboutFragment extends RoboSherlockDialogFragment {
 
 		final String versionFromManifest = getArguments().getString("version");
 		version.setText(versionFromManifest);
+
 	}
 }

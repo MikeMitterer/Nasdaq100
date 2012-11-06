@@ -960,6 +960,8 @@ containing a value of this type.
     }
     public static final class id {
         public static final int LinearLayout1=0x7f060044;
+        public static final int about_linear_layout=0x7f060011;
+        public static final int about_scroller=0x7f060010;
         public static final int abs__action_bar=0x7f060025;
         public static final int abs__action_bar_container=0x7f060024;
         public static final int abs__action_bar_subtitle=0x7f060014;
@@ -1031,13 +1033,11 @@ containing a value of this type.
         public static final int stockinfo=0x7f060045;
         public static final int symbol_weighting=0x7f06003b;
         public static final int tabMode=0x7f060003;
-        public static final int tableRow1=0x7f060010;
-        public static final int tableRow2=0x7f060012;
         public static final int tutView=0x7f060049;
         public static final int tutlist_fragment=0x7f060040;
         public static final int tutview_fragment=0x7f060047;
         public static final int useLogo=0x7f060004;
-        public static final int version=0x7f060011;
+        public static final int version=0x7f060012;
         public static final int viewer_layout=0x7f060046;
         public static final int wrap_content=0x7f060000;
         public static final int zoom=0x7f06004a;
@@ -1046,6 +1046,7 @@ containing a value of this type.
         public static final int abs__max_action_buttons=0x7f0a0000;
         public static final int line_height_in_list=0x7f0a0001;
         public static final int list_max_number_width=0x7f0a0002;
+        public static final int max_lines_copyright=0x7f0a0003;
     }
     public static final class layout {
         public static final int about_fragment=0x7f030000;
@@ -1135,8 +1136,18 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f0b0009;
         public static final int app_name=0x7f0b000f;
         public static final int data_copyright=0x7f0b0028;
+        public static final int data_github=0x7f0b0030;
+        public static final int data_license_link=0x7f0b0034;
+        public static final int data_license_part1=0x7f0b0032;
+        public static final int data_license_part2=0x7f0b0036;
+        public static final int data_website=0x7f0b002e;
+        public static final int label_blank=0x7f0b0035;
         public static final int label_copyright=0x7f0b0027;
+        public static final int label_github=0x7f0b002f;
+        public static final int label_license=0x7f0b0031;
+        public static final int label_license_link=0x7f0b0033;
         public static final int label_version=0x7f0b0026;
+        public static final int label_website=0x7f0b002d;
         public static final int list_item_percent=0x7f0b0014;
         public static final int logo_description=0x7f0b001a;
         public static final int menu_about=0x7f0b002c;

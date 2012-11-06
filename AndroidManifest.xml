@@ -21,7 +21,7 @@
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Sherlock" >
+        android:theme="@style/Theme.Sherlock">
         <provider
             android:name=".model.provider.DataProvider"
             android:authorities="at.mikemitterer.tutorial.fragments.model.provider.DataProvider" 

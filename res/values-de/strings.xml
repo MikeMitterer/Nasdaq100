@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">Nasdaq100</string>
     <string name="menu_show_stockinfo">Aktieninfo</string>
@@ -21,6 +21,16 @@
     <string name="prefs_header_language_settings">Spracheinstellungen</string>
     <string name="prefs_header_language_summary">Sprachspezifische Einstellungen</string>
     <string name="stockinfo_spacer">Abstand am obern Rand des Fragments</string>
-    <string name="stockinfo_image">Chart</string>
-
+    <string name="stockinfo_image">Grafik</string>
+    <string name="spacer">Leerraum zwischen den Spalten</string>
+    <string name="about_close">Schließen</string>
+    <string name="label_license">Lizenz:</string>
+    <string name="about_title">Über Nasdaq100</string>
+    <string name="menu_about">Info</string>
+    <string name="label_website">Homepage:</string>
+    <string name="data_license_part1">Lizenziert unter der Apache-Lizenz, Version 2.0 (die "Lizenz") - Verwendung der Datei nur unter Einhaltung der Lizenzbestimmungen. Ein Kopie der Lizenz erhalten Sie unter:</string>
+    <string name="data_license_part2">Sofern nicht durch geltendes Recht gefordert oder schriftlich vereinbart, wird die Software unter der Lizenz auf der Grundlage "WIE BESEHEN", OHNE GARANTIE ODER BEDINGUNGEN JEGLICHER ART, weder ausdrücklich noch stillschweigend, verbreitet. Die für die jeweilige Sprache geltenden Berechtigungen und Einschränkungen im Rahmen der Lizenz entnehmen Sie der Lizenz.</string>
+    <string name="placeholder_version">1.0</string>
+    <string name="data_copyright">Michael Mitterer, IT-Consulting and Development Limited, Niederlassung Österreich</string>
+    <string name="label_version">Version:</string>
 </resources>

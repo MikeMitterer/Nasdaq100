@@ -34,7 +34,6 @@ public class AboutFragmentProvider implements Provider<AboutFragment> {
 	@Override
 	public AboutFragment get() {
 		final AboutFragment about = new AboutFragment();
-		//about.setStyle(DialogFragment.STYLE_NORMAL, 0);
 
 		final Bundle args = new Bundle();
 		args.putString("version", version);
