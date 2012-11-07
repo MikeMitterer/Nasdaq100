@@ -44,7 +44,7 @@ checkExport() {
 usage()
     {
     echo "Usage: . ./`basename $0` [options] <device|alias>"
-    echo -e "\t            Set the default device for adb"
+    echo -e "\t            Set the default device for adb install"
     echo -e "\t            Be aware of the . (dot) in front of the command"
     echo -e "\t            to avoid a subshell\n"
     echo -e "\t            Sample: . ./tagdev --alias device1\n"
