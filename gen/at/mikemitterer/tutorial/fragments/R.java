@@ -1179,8 +1179,6 @@ containing a value of this type.
         public static final int spacer=0x7f0b002b;
         public static final int stockinfo_image=0x7f0b0027;
         public static final int stockinfo_spacer=0x7f0b0026;
-        /**  N1, Samsung GT1000 
-         */
         public static final int testdevices=0x7f0b0010;
     }
     public static final class style {

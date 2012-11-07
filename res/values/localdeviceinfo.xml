@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="publisherid">You get it from ADMOB</string>
-    <string name="testdevices">TEST_EMULATOR,+++</string>    
+    <string name="testdevices">TEST_EMULATOR,Check LogCat and filter for device</string>    
 </resources>
