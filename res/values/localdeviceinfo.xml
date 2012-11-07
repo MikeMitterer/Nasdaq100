@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string name="publisherid">You get it from ADMOB</string>
+    <!-- N1, Samsung GT1000 -->
+    <string name="testdevices">TEST_EMULATOR,Check LogCat and filter for device</string>   
+</resources>

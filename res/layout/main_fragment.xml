@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <fragment
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tutlist_fragment"
         android:name="at.mikemitterer.tutorial.fragments.view.bignames.BigNamesFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
     </fragment>
 
-</FrameLayout>
+
+    <Button
+        android:id="@+id/placeholder_for_admob"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_weight="0"
+        android:text="@string/placeholder_for_admob" />
+
+    <!--
+    This breaks the Editor-View
+    <com.google.ads.AdView
+        android:id="@+id/placeholder_for_admob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        ads:adSize="BANNER"
+        ads:adUnitId="YOUR_PUBLISHER_ID HERE"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID_GOES_HERE" />
+    -->
+
+</LinearLayout>

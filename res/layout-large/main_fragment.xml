@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frags"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:orientation="horizontal" >
+    android:orientation="vertical"
+    tools:ignore="NestedWeights" >
 
-    <fragment
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/bignames_fragment"
-        android:name="at.mikemitterer.tutorial.fragments.view.bignames.BigNamesFragment"
+    <LinearLayout
+        android:id="@+id/frags"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3" >
-
-    </fragment>
-
-    <fragment
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/details_fragment"
-        android:name="at.mikemitterer.tutorial.fragments.view.details.DetailsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/default_padding"
+        android:layout_height="fill_parent"
         android:layout_weight="1" >
 
-    </fragment>    
+        <fragment
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bignames_fragment"
+            android:name="at.mikemitterer.tutorial.fragments.view.bignames.BigNamesFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3" >
+        </fragment>
+
+        <fragment
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/details_fragment"
+            android:name="at.mikemitterer.tutorial.fragments.view.details.DetailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:layout_weight="1" >
+        </fragment>
+    </LinearLayout>
+
+    <!--
+    This breaks the Editor-View
+    <com.google.ads.AdView
+        android:id="@+id/placeholder_for_admob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        ads:adSize="IAB_BANNER"
+        ads:adUnitId="YOUR_PUBLISHER_ID HERE"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR,TEST_DEVICE_ID_GOES_HERE" />
+    -->
+
+    <Button
+        android:id="@+id/placeholder_for_admob"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/placeholder_for_admob"
+        android:visibility="visible" />
+
 </LinearLayout>

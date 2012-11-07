@@ -37,6 +37,8 @@ import roboguice.event.EventManager;
 import roboguice.inject.ContentView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.events.OnAboutClicked;
 import at.mikemitterer.tutorial.fragments.events.PreferencesChanged;
@@ -66,30 +68,32 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 	@Inject
 	protected Provider<ImageLoader>	providerForImageLoader;
 
-	//@Inject
-	//protected MinimalStockInfoFactory	minimalStockInfoFactory;
 	@Override
+	/**
+	 * Used to replace the button with AdView. Direct usage of AdView in XML breaks the Editor in Eclipse (known issue)
+	 * 
+	 * @see <a href="http://jmsliu.com/674/add-admob-v6-to-your-android-apps-example.html">Add AdMob v6 to Your Android Apps Example</a>
+	 * @see <a href="http://code.google.com/p/google-mobile-dev/source/browse/examples/?repo=examples-android#examples%253Fstate%253Dclosed">google-mobile-dev</a>
+	 * @see <a href="http://stackoverflow.com/questions/3334048/android-layout-replacing-a-view-with-another-view-on-run-time">Android layout replacing a view with another view on run time</a>
+	 * @see <a href="https://developers.google.com/mobile-ads-sdk/docs/bestpractices">AdMob - Best Practices</a>
+	 */
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		logger.debug("BigNames Activity created...");
-	}
 
-	// Sent by BigNamesFragment
-	//	public void onItemClicked(@Observes final OnItemClicked event) {
-	//		final WebViewFragment viewer = (WebViewFragment) getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
-	//
-	//		final Bundle bundle = minimalStockInfoFactory.createBundle(event.minimalstockinfo);
-	//
-	//		if (viewer == null || !viewer.isInLayout()) {
-	//			final Intent showContent = new Intent(getApplicationContext(), DetailsActivity.class);
-	//
-	//			showContent.putExtras(bundle);
-	//			startActivity(showContent);
-	//		}
-	//		else {
-	//			eventbus.fire(event.minimalstockinfo);
-	//		}
-	//	}
+		// Replace the Button with AdView
+		final View placeholder = findViewById(R.id.placeholder_for_admob);
+		final ViewGroup parent = (ViewGroup) placeholder.getParent();
+		final int index = parent.indexOfChild(placeholder);
+		parent.removeView(placeholder);
+		final View admob = getLayoutInflater().inflate(R.layout.adview, parent, false);
+		parent.addView(admob, index);
+
+		// ViewStub is not visible in the editor, so I prefere the Button
+		//		final ViewStub placeholder = (ViewStub) findViewById(R.id.placeholder_for_admob);
+		//		placeholder.setLayoutResource(R.layout.adview);
+		//		placeholder.inflate();
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
@@ -136,4 +140,5 @@ public class BigNamesActivity extends RoboSherlockFragmentActivity {
 			break;
 		}
 	}
+
 }

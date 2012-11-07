@@ -44,7 +44,11 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import at.mikemitterer.tutorial.fragments.R;
 import at.mikemitterer.tutorial.fragments.di.annotation.ForLogoList;
@@ -62,12 +66,12 @@ import at.mikemitterer.tutorial.fragments.view.details.WebViewFragment;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
-import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockListFragment;
+import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class BigNamesFragment extends RoboSherlockListFragment implements LoaderCallbacks<Cursor> {
+public class BigNamesFragment extends RoboSherlockFragment implements LoaderCallbacks<Cursor>, OnItemClickListener {
 	private static Logger				logger		= LoggerFactory.getLogger(BigNamesFragment.class.getSimpleName());
 
 	private static final int			LIST_LOADER	= 0x01;
@@ -94,27 +98,31 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 	@Inject
 	protected Provider<AboutFragment>	providerForAboutFragment;
 
-	@Override
-	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
-		final Cursor cursor = (Cursor) l.getAdapter().getItem(position);
-
-		providerForSoundManager.get().playClick();
-
-		final WebViewFragment viewer = (WebViewFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
-
-		final Bundle bundle = minimalStockInfoFactory.createBundle(cursor);
-
-		if (viewer == null || !viewer.isInLayout()) {
-			final Intent showContent = new Intent(getActivity(), DetailsActivity.class);
-
-			showContent.putExtras(bundle);
-			startActivity(showContent);
-		}
-		else {
-			eventbus.fire(minimalStockInfoFactory.create(cursor));
-		}
-
-	}
+	//  ListFragment
+	//  I am using a normal Fragment here because of the Add at the bottom of the screen.
+	//  It seems it's not possible to use a custom-listview here. Anyway, implementing the ListFragment functionality 
+	//  is easy. (See the "private" section)
+	//	@Override
+	//	public void onListItemClick(final ListView l, final View v, final int position, final long id) {
+	//		final Cursor cursor = (Cursor) l.getAdapter().getItem(position);
+	//
+	//		providerForSoundManager.get().playClick();
+	//
+	//		final WebViewFragment viewer = (WebViewFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+	//
+	//		final Bundle bundle = minimalStockInfoFactory.createBundle(cursor);
+	//
+	//		if (viewer == null || !viewer.isInLayout()) {
+	//			final Intent showContent = new Intent(getActivity(), DetailsActivity.class);
+	//
+	//			showContent.putExtras(bundle);
+	//			startActivity(showContent);
+	//		}
+	//		else {
+	//			eventbus.fire(minimalStockInfoFactory.create(cursor));
+	//		}
+	//
+	//	}
 
 	@Override
 	public void onActivityCreated(final Bundle savedInstanceState) {
@@ -255,7 +263,8 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 		}
 		else {
 			logger.debug("Show ListView (NoAnimation), Cursor is filled with data...");
-			setListShownNoAnimation(true);
+			setListShown(true); // - use with Fragment
+			//setListShownNoAnimation(true); // - use with ListFragment
 		}
 
 		// If in DualPane-Layout show info (WIKI-Page) for first symbol
@@ -277,8 +286,57 @@ public class BigNamesFragment extends RoboSherlockListFragment implements Loader
 
 	}
 
+	@Override
+	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+		final View view = inflater.inflate(R.layout.list_view, container, false);
+		final ListView lv = (ListView) view.findViewById(R.id.big_names_list);
+		lv.setOnItemClickListener(this);
+
+		return view;
+	}
+
+	@Override
+	public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
+		final Cursor cursor = (Cursor) parent.getAdapter().getItem(position);
+
+		providerForSoundManager.get().playClick();
+
+		final WebViewFragment viewer = (WebViewFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.tutview_fragment);
+
+		final Bundle bundle = minimalStockInfoFactory.createBundle(cursor);
+
+		if (viewer == null || !viewer.isInLayout()) {
+			final Intent showContent = new Intent(getActivity(), DetailsActivity.class);
+
+			showContent.putExtras(bundle);
+			startActivity(showContent);
+		}
+		else {
+			eventbus.fire(minimalStockInfoFactory.create(cursor));
+		}
+	}
+
 	//---------------------------------------------------------------------------------------------
 	// private
 	//---------------------------------------------------------------------------------------------
+	private void setListAdapter(final CursorAdapter adapter) {
+		getListView().setAdapter(adapter);
+	}
 
+	private void setListShown(final boolean show) {
+		getListView().setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+		setListShownNoAnimation(show);
+	}
+
+	private ListView getListView() {
+		return (ListView) getView().findViewById(R.id.big_names_list);
+	}
+
+	private int getSelectedItemPosition() {
+		return getListView().getSelectedItemPosition();
+	}
+
+	private void setListShownNoAnimation(final boolean show) {
+		getView().findViewById(R.id.big_names_progressindicator).setVisibility(!show ? View.VISIBLE : View.INVISIBLE);
+	}
 }
