@@ -1,3 +1,4 @@
 bin/*
 ant.properties
 target/
+res/values/localdeviceinfo.xml
