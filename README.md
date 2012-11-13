@@ -33,17 +33,19 @@ License
 
 Hint
 ========
-	If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android.
-	(At least on Linux or Mac OS)
+If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android.
+(At least on Linux or Mac OS)
 	
-	check out the [script][11] in doc/bin/genAndroidIcons. (Don't forget to chmod 700 doc/bin/genAndroidIcons)
-	(Tested on Mac OSX 10.8.2, should also work on Linux. Sorry Windows-User, no script for you)
-	[Here][12] you can see one of the preview-files the script generates.
-	The preview.png was generated with a border and a shadow so that it's easier do see the thumbnail dimensions.
+check out the [script][11] in doc/bin/genAndroidIcons. (Don't forget to chmod 700 doc/bin/genAndroidIcons)
+(Tested on Mac OSX 10.8.2, should also work on Linux. Sorry Windows-User, no script for you)
+[Here][12] you can see one of the preview-files the script generates.
+The preview.png was generated with a border and a shadow so that it's easier do see the thumbnail dimensions.
 	
-	A possible file structure the script generates:
-	![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/defaulticon/my-structure.png)
-	 
+A possible file structure the script generates:
+
+![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/defaulticon/my-structure.png)
+
+
 [1]: https://github.com/JakeWharton/ActionBarSherlock
 [2]: https://github.com/nostra13/Android-Universal-Image-Loader
 [3]: https://github.com/rtyley/roboguice-sherlock
