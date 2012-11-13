@@ -1,0 +1,200 @@
+#/bin/sh
+
+USEFULLTRANSPARENCY=true
+
+#BASFOLDER=256x256
+#TEMPFOLDER=~/.tmp.$BASFOLDER
+#TARGETBASEFOLDER=android
+
+BASFOLDER=`echo $1 | sed 's/\/$//'`
+TARGETBASEFOLDER=`echo $2 | sed 's/\/$//'`
+TEMPFOLDER=~/.tmp.android.pngs
+
+# Nice for testing
+FILEMASK="z*.png"
+
+LDPI=24x24
+MDPI=32x32
+HDPI=48x48
+XHDPI=64x64
+
+checkForTargetFolder() {
+	if [ ! -d "$TARGETBASEFOLDER" ]; then
+		echo "$TARGETBASEFOLDER is not available"
+		mkdir -p "$TARGETBASEFOLDER"
+		echo -e "\t`readlink -f $TARGETBASEFOLDER` created...\n"
+	fi
+}
+
+generateForTheme() {
+	THEME=$1
+	THEMECOLOR=$2
+	THEMEDIVIDER=$3
+	THEMEEXTRAOPTION=$4
+	
+	LPATH="$TARGETBASEFOLDER/$THEME/ldpi"
+	MPATH="$TARGETBASEFOLDER/$THEME/mdpi"
+	HPATH="$TARGETBASEFOLDER/$THEME/hdpi"
+	XPATH="$TARGETBASEFOLDER/$THEME/xhdpi"
+	
+	mkdir -p "$LPATH"
+	mkdir -p "$MPATH"
+	mkdir -p "$HPATH"
+	mkdir -p "$XPATH"
+	
+	if [ "$USEFULLTRANSPARENCY" = "true" ]
+	then
+		SUBCOMMAND="$THEMEEXTRAOPTION -channel Alpha -evaluate Divide $THEMEDIVIDER"
+	else
+		SUBCOMMAND="$THEMEEXTRAOPTION +level-colors \"$THEMECOLOR,\""
+	fi
+	
+	echo Theme: $THEME \(Color: $THEMECOLOR, Divider: $THEMEDIVIDER\)
+
+	echo -e "\tGenerating for $LDPI (ldpi)..."
+	#mogrify -path "$LPATH" -resize "$LDPI" +level-colors \"$THEMECOLOR,\" "$TEMPFOLDER/*.png"
+	find "$TEMPFOLDER" -iname "$FILEMASK" -execdir convert {} -resize "$LDPI" $SUBCOMMAND "$LPATH/{}" \;
+	
+	echo -e "\tGenerating for $MDPI (mdpi)..."
+	#mogrify -path "$MPATH" -resize "$MDPI" +level-colors \"$THEMECOLOR,\" "$TEMPFOLDER/*.png"
+	find "$TEMPFOLDER" -iname "$FILEMASK" -execdir convert {} -resize "$MDPI" $SUBCOMMAND "$MPATH/{}" \; 
+	
+	echo -e "\tGenerating for $HDPI (hdpi)..."
+	#mogrify -path "$HPATH" -resize "$HDPI" +level-colors \"$THEMECOLOR,\" "$TEMPFOLDER/*.png"
+	find "$TEMPFOLDER" -iname "$FILEMASK" -execdir convert {} -resize "$HDPI" $SUBCOMMAND "$HPATH/{}" \; 
+	
+	echo -e "\tGenerating for $XHDPI (xhdpi)..."
+	#mogrify -path "$XPATH" -resize "$XHDPI" +level-colors \"$THEMECOLOR,\" "$TEMPFOLDER/z*.png"
+	find "$TEMPFOLDER" -iname "$FILEMASK" -execdir convert {} -resize "$XHDPI" $SUBCOMMAND "$XPATH/{}" \; 
+	
+	generatePreview $THEME 
+}
+
+generatePreview() {
+	THEME=$1
+
+	MPATH="$TARGETBASEFOLDER/$THEME/mdpi"
+
+	if [ ! -d "$MPATH" ]; then
+		echo "Basefolder ($MPATH) to generate preview.png not available..."
+		exit 1
+	fi
+	
+	echo -e "\tGenerate preview ($TARGETBASEFOLDER/$THEME/preview.png)..."
+	# Without border + shadow
+	# montage "$MPATH/*.png" -mode concatenate -tile 8x -geometry +5+5 "$TARGETBASEFOLDER/$THEME/preview.png"
+	
+	# With shadow
+	montage "$MPATH/*.png" -mode concatenate -tile 8x -geometry +5+5 -border 1 -shadow "$TARGETBASEFOLDER/$THEME/preview.png"
+}
+
+generateAllThemes() {
+	# These values are try and error.
+	# I compared with Icons from AndroidIcons-Project
+	# and the intention was to come a near as possible.
+	
+	generateForTheme holo_light "#bcbcbc" "2.2" 
+	generateForTheme holo_dark "#FeFeFe" "1.2" "-negate"
+	generateForTheme white "#ffffff" "1.0" "-negate"
+	generateForTheme black "#000000" "1.0"
+}
+
+generateAllPreviews() {
+	generatePreview holo_light
+	generatePreview holo_dark
+	generatePreview white
+	generatePreview black
+}
+
+prepareForAndroid() {
+	if [ ! -d "$TEMPFOLDER" ]; then
+		echo "Copy $BASFOLDER to $TEMPFOLDER..."
+		mkdir -p "$TEMPFOLDER"
+		cp $BASFOLDER/*.png $TEMPFOLDER
+	else
+		NSOURCE=`ls $BASFOLDER/*.png | wc -l`
+		NTARGET=`ls $TEMPFOLDER/*.png | wc -l`
+		
+		if [ "$NSOURCE" -ne "$NTARGET" ]; then
+			echo "Not the same number of files in $BASFOLDER and $TEMPFOLDER"
+			echo "creating $TEMPFOLDER again..."
+			rm -rf $TEMPFOLDER
+			mkdir -p "$TEMPFOLDER"
+			cp $BASFOLDER/*.png $TEMPFOLDER
+		fi
+	fi
+	
+	# on Mac you need ports and p5-file-rename installed for this!
+	echo "Rename all files with - to _ (Android does not like -)"
+	find $TEMPFOLDER -iname "*-*.png" -exec rename 's/-/_/g' {} \;
+}
+
+checkForProgramms() {
+	progs=( "mogrify" "rename" "montage" "readlink")
+	for prog in "${progs[@]}"
+	do
+		echo -e "\tChecking for $prog..."
+		type $prog >/dev/null 2>&1 || { echo -e >&2 "\t\tI require $prog but it's not installed.  Aborting."; exit 1; }
+	done
+	echo -e "\nDone, everything is installed!"
+}
+
+showFolders() {
+	 echo "Basefolder: `readlink -f $BASFOLDER`"
+	 echo "Targetfolder: `readlink -f $TARGETBASEFOLDER`"
+	 echo "Tempfolder: `readlink -f $TEMPFOLDER`"
+	 echo -e ""
+}
+
+#------------------------------------------------------------------------------
+# Options
+#
+
+usage()
+    {
+    echo "Usage: ./`basename $0` <sourcefolder> <targetfolder>\n"
+    echo -e "\t            Converts all png's to Android menu-icons\n"
+    echo -e "\t--check     Check for necessary programs"
+    echo -e "\t--prev      Generate preview.png only (sourcefolder = Folder with already gnerated png's)"
+    echo -e "\t--help      This message\n"
+    echo -e "\t            Sample:"
+    echo -e "\t            \t genAndroidIcons /Volumes/projects/DefaultIcon/png/256x256/ /Volumes/projects/DefaultIcon/png/android"
+    echo -e "\t            \t genAndroidIcons --prev /Volumes/projects/DefaultIcon/png/android"
+    echo -e ""
+    }
+
+
+case "$1" in 
+    help|-help|--help)
+		usage
+	;;
+
+    check|-check|--check)
+		checkForProgramms
+	;;
+
+    prev|-prev|--prev)
+	    if( [ -d $2 ])
+	    then
+	    	generateAllPreviews
+	    else
+	    	usage
+	    fi
+	;;
+	
+    *)
+	    if( [ "$1" != "" ] && [ "$2" != "" ] && [ -d $1 ])
+	    #  && [ -d $2 ]
+	    then
+	    	checkForTargetFolder
+	    	showFolders
+	    	checkForProgramms
+	    	prepareForAndroid
+	    	generateAllThemes
+	    else
+	    	usage
+	    fi
+	;;
+
+esac    
+exit 0

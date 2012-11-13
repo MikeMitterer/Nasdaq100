@@ -957,6 +957,7 @@ containing a value of this type.
         public static final int progress_circular_background=0x7f020078;
         public static final int progress_particle=0x7f020079;
         public static final int stub=0x7f02007a;
+        public static final int trash_empty=0x7f02007b;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f060047;
@@ -1179,6 +1180,8 @@ containing a value of this type.
         public static final int spacer=0x7f0b002b;
         public static final int stockinfo_image=0x7f0b0027;
         public static final int stockinfo_spacer=0x7f0b0026;
+        /**  N1, Samsung GT1000 
+         */
         public static final int testdevices=0x7f0b0010;
     }
     public static final class style {

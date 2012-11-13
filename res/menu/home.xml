@@ -34,11 +34,19 @@
         <item
             android:id="@+id/menu_clear_cache"
             android:enabled="true"
+            android:icon="@drawable/trash_empty"
             android:showAsAction="never|collapseActionView"
             android:title="@string/menu_clear_cache"
             android:visible="true">
         </item>
-        <item android:id="@+id/menu_about" android:title="@string/menu_about" android:showAsAction="never|collapseActionView" android:enabled="true" android:visible="true" android:icon="@drawable/ic_action_info"></item>
+        <item
+            android:id="@+id/menu_about"
+            android:enabled="true"
+            android:icon="@drawable/ic_action_info"
+            android:showAsAction="never|collapseActionView"
+            android:title="@string/menu_about"
+            android:visible="true">
+        </item>
     </group>
 
 </menu>
