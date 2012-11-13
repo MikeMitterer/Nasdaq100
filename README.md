@@ -16,9 +16,13 @@ Development / Settings
 It should be easy to setup for you. The only tricky part is to add ActionBarSherlock.
 Under [doc/dependency/][13] I have added the ActionBarSherlock version I use.
 These screenshots should help to setup the project for you:
+
 ![In Eclipse](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/eclipse.png)
+
 ![On Harddisk](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/onhd.png)
+
 ![Settings for ActionBarSherlock](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/settings-actionbarsherlock.png)
+
 ![Settings for Nasdaq100](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/settings-nasdaq100.png)
 
 Dependencies
