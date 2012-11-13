@@ -22,7 +22,6 @@ import com.google.inject.Inject;
  * 
  */
 public class AboutFragment extends RoboSherlockDialogFragment {
-	@SuppressWarnings("unused")
 	private static Logger	logger	= LoggerFactory.getLogger(AboutFragment.class.getSimpleName());
 
 	@InjectView(R.id.version)

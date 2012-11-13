@@ -1,5 +1,25 @@
 Nasdaq100
 =========
+This App shows you the top Nasdaq100 companies with their logo's. If you select one of these companies it
+shows you it's Wikipedia entry. Another option is to display a chart image of the last 3 month.
+
+![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/screenshots-collage.png)
+
+Intention / OpenSource
+======================
+On reason to OpenSource this App was to show a real live Application with Fragments, ActionBarSherlock,
+Roboguice, targeting different Android versions, different devices (N1, Tablet aso.) and AdMob in one place. 
+It's also a tribute to all the OpenSource stuff I use.
+
+Development / Settings
+============
+It should be easy to setup for you. The only tricky part is to add ActionBarSherlock.
+Under [doc/dependency/][13] I have added the ActionBarSherlock version I use.
+These screenshots should help to setup the project for you:
+[In Eclipse](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/eclipse.png)
+[On Harddisk](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/onhd.png)
+[Settings for ActionBarSherlock](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/settings-actionbarsherlock.png)
+[Settings for Nasdaq100](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/settings-nasdaq100.png)
 
 Dependencies
 ============
@@ -31,8 +51,9 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-Hint
+Scripts
 ========
+#### genAndroidIcons
 If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android.
 (At least on Linux or Mac OS)
 	
@@ -45,6 +66,18 @@ A possible file structure the script generates:
 
 ![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/defaulticon/my-structure.png)
 
+#### tagdev
+If you have more than one physical device connected to your PC and if you want
+to use the command-line with ant you have to specify the serial number of your target device to help ant (+ adb)
+to copy the apk to the right location.
+[tagdev][14] should help.
+
+Sample:
+- $ doc/bin/tagdev --list
+- $ . doc/bin/tagdev --alias device1
+- $ ant installr
+
+And agin - sorry dear Windows-User. Maybe [Cygwin][15] can help...
 
 [1]: https://github.com/JakeWharton/ActionBarSherlock
 [2]: https://github.com/nostra13/Android-Universal-Image-Loader
@@ -58,3 +91,6 @@ A possible file structure the script generates:
 [10]: http://developer.android.com/guide/practices/ui_guidelines/icon_design_menu.html
 [11]: https://github.com/MikeMitterer/Nasdaq100/tree/master/doc/bin/genAndroidIcons
 [12]: https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/defaulticon/preview.png
+[13]: https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/dependency
+[14]: https://github.com/MikeMitterer/Nasdaq100/tree/master/doc/bin/tagdev
+[15]: http://www.cygwin.com/

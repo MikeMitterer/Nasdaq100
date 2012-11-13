@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="at.mikemitterer.tutorial.fragments"
     android:installLocation="auto"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -15,13 +15,14 @@
     </uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!-- für Error-Report -->
+    <!-- für Error-Report 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
+	-->
+	
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Sherlock" >
+        android:theme="@style/Theme.Sherlock" android:debuggable="false">
         <provider
             android:name=".model.provider.DataProvider"
             android:authorities="at.mikemitterer.tutorial.fragments.model.provider.DataProvider"
@@ -38,14 +39,14 @@
         </activity>
         <activity
             android:name=".view.details.DetailsActivity"
-            android:label="Tutorial Viewer" />
+            android:label="@string/activity_viewer" />
         <activity
             android:name=".view.prefs.PrefsActivityForFragments"
-            android:label="Preferences" >
+            android:label="@string/activity_preferences" >
         </activity>
         <activity
             android:name=".view.prefs.PrefsActivitySimple"
-            android:label="Preferences" >
+            android:label="@string/activity_preferences" >
         </activity>
         
         <activity

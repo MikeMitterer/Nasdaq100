@@ -33,4 +33,8 @@
     <string name="placeholder_version">1.0</string>
     <string name="data_copyright">Michael Mitterer, IT-Consulting and Development Limited, Niederlassung Österreich</string>
     <string name="label_version">Version:</string>
+    <string name="prefs_sound_summary">Spielt ein Geräusch wenn man auf einen Eintrag aus der Firmenliste wählt</string>
+    <string name="prefs_sound_title">Sound</string>
+    <string name="activity_viewer">Details</string>
+    <string name="activity_preferences">Settings</string>
 </resources>

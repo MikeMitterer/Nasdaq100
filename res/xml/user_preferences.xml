@@ -4,7 +4,7 @@
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="soundPreference"
-            android:summary="Play sound on adds and updates"
-            android:title="Sound" />
+            android:summary="@string/prefs_sound_summary"
+            android:title="@string/prefs_sound_title" />
     </PreferenceCategory>
 </PreferenceScreen>
