@@ -32,7 +32,7 @@ License
     limitations under the License.
 
 Hint
-=====
+========
 	If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android.
 	(At least on Linux or Mac OS)
 	
