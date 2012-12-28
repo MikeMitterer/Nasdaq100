@@ -2,9 +2,9 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>at.mikemitterer.tutorial</groupId>
-	<artifactId>fragments</artifactId>
-	<version>1.1</version>
+	<groupId>at.mikemitterer</groupId>
+	<artifactId>nasdaq100</artifactId>
+	<version>1.2</version>
 
 	<!-- properties> <android.support.version>r6</android.support.version> </properties -->
 	<!--

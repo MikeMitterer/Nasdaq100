@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="at.mikemitterer.tutorial.fragments"
+    package="at.mikemitterer.nasdaq100"
     android:installLocation="auto"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="3"
+    android:versionName="1.2" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -25,7 +25,7 @@
         android:theme="@style/Theme.Sherlock" android:debuggable="false">
         <provider
             android:name=".model.provider.DataProvider"
-            android:authorities="at.mikemitterer.tutorial.fragments.model.provider.DataProvider"
+            android:authorities="at.mikemitterer.nasdaq100.model.provider.DataProvider"
             android:exported="false" />
 
         <activity

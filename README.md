@@ -6,9 +6,9 @@ Additionaly they can opt to view the company’s chart over the last 3 months
 
 ![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/screenshots-collage.png)
 
-WebSite
+WebSite + Google Play
 ======================
-[www.nasdaq100.at](http://www.nasdaq100.at/) 
+[www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
 German only, englisch will come in the next few weeks
 
 Intention / OpenSource
