@@ -11,6 +11,8 @@ WebSite + Google Play
 [www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
 German only, englisch will come in the next few weeks
 
+[Google Play](https://play.google.com/store/apps/details?id=at.mikemitterer.nasdaq100)
+
 Intention / OpenSource
 ======================
 One reason to OpenSource this app was to demonstrate a real live application with Fragments, ActionBarSherlock and
