@@ -1,21 +1,22 @@
 Nasdaq100
 =========
-This App shows you the top Nasdaq100 companies with their logo's. If you select one of these companies it
-shows you it's Wikipedia entry. Another option is to display a chart image of the last 3 month.
+This app displays the top Nasdaq100 companies with their accompanying logo's. 
+Users can simply select one of these companies to be redirected to the organization’s Wikipedia entry. 
+Additionaly they can opt to view the company’s chart over the last 3 months
 
 ![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/screenshots-collage.png)
 
 Intention / OpenSource
 ======================
-On reason to OpenSource this App was to show a real live Application with Fragments, ActionBarSherlock,
-Roboguice, targeting different Android versions, different devices (N1, Tablet aso.) and AdMob in one place. 
-It's also a tribute to all the OpenSource stuff I use.
+One reason to OpenSource this app was to demonstrate a real live application with Fragments, ActionBarSherlock and
+Roboguice, that targets different versions of Android, different devices (N1, Tablet aso.) and AdMob, all in one place. 
+The application was also developed as a tribute to all the OpenSource material that I have benefited from in the past.
 
 Development / Settings
 ============
-It should be easy to setup for you. The only tricky part is to add ActionBarSherlock.
-Under [doc/dependency/][13] I have added the ActionBarSherlock version I use.
-These screenshots should help to setup the project for you:
+It should be easy to setup for you. The only tricky part is adding the ActionBarSherlock part. 
+Under [doc/dependency/][13] I have added a link to the version of ActionBarSherlock that I use. 
+The screenshots below should guide you through the rest of the setup process:
 
 In Eclipse:<br>
 ![In Eclipse](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/screenshots/images/eclipse.png)
@@ -39,10 +40,10 @@ Dependencies
 
 License
 ========
-- All dependencies are under the licence set by their respective owners
+- All dependencies are under the license set by their respective owners
 - The project makes use of icons released in the [AndroidIcons project][6], and are released under their respective licenses
-- The [application icon][7] and the [background image][8] are based on files from Fotolia and protected by their respective licenses
-- The project makes use of icons released in the [www.defaulticon.com project][9], and are released under their respective licenses
+- The [application icon][7] and the [background image][8] are based on files from Fotolia and are protected by their respective licenses
+- The project makes use of icons that were released in the [www.defaulticon.com project][9], and are released under their respective licenses
 
     Copyright 2012 Michael Mitterer, IT-Consulting and Development Limited,
     Austrian Branch
@@ -53,39 +54,40 @@ License
 
        http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+    Unless required by applicable law or agreed to in writing, 
+    software distributed under the License is distributed on an 
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+    either express or implied. See the License for the specific language 
+    governing permissions and limitations under the License.
+    
 
 Scripts
 ========
 #### genAndroidIcons
-If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android.
-(At least on Linux or Mac OS)
+If you use [www.defaulticon.com][9] icons in your Android project it's very easy to generate your own iconsets for Android
+(At least on Linux or Mac OS).
 	
-check out the [script][11] in doc/bin/genAndroidIcons. (Don't forget to chmod 700 doc/bin/genAndroidIcons)
-(Tested on Mac OSX 10.8.2, should also work on Linux. Sorry Windows-User, no script for you)
-[Here][12] you can see one of the preview-files the script generates.
-The preview.png was generated with a border and a shadow so that it's easier do see the thumbnail dimensions.
+Check out the [script][11] in doc/bin/genAndroidIcons. (Don't forget to chmod 700 doc/bin/genAndroidIcons)
+(Tested on Mac OSX 10.8.2, should also work on Linux. Sorry Windows user, there is no script for you)
+[Here][12] you can see one of the preview files that the script generates.
+The preview.png was generated with a border and a shadow so that it's easier to see the thumbnail dimensions.
 	
-A possible file structure the script generates:
+Below you can see a screenshot of a possible file structure the script generates:
 
 ![Screenshot](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/defaulticon/my-structure.png)
 
 #### tagdev
 If you have more than one physical device connected to your PC and if you want
-to use the command-line with ant you have to specify the serial number of your target device to help ant (+ adb)
-to copy the apk to the right location.
-[tagdev][14] should help.
+to use the command-line with ant, you need to specify the serial number of your target device to help ant (+ adb)
+to copy the apk to the correct location.
+[tagdev][14] should help you to do this.
 
 Sample:
 - $ doc/bin/tagdev --list
 - $ . doc/bin/tagdev --alias device1
 - $ ant installr
 
-And agin - sorry dear Windows-User. Maybe [Cygwin][15] can help...
+And again - sorry dear Windows user. Maybe [Cygwin][15] can help...
 
 [1]: https://github.com/JakeWharton/ActionBarSherlock
 [2]: https://github.com/nostra13/Android-Universal-Image-Loader
