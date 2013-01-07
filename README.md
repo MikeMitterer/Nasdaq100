@@ -26,7 +26,7 @@ WebSite + Google Play
 			<a href="http://www.nasdaq100.at/#c1184" target="_blank">
 				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/btn_donate_en.gif">
 			</a><br />
-			<strong>Install App</strong>
+			<strong>Thank you!</strong>
 		</td>		
 	</tr>
 </table>
