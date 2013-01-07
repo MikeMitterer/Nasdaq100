@@ -13,13 +13,13 @@ WebSite + Google Play
 		<td>
 			<a href="http://www.nasdaq100.at/" target="_blank">
 				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png">
-			</a>
+			</a><br />
 			Website
 		</td>
 		<td>
 			<a href="https://play.google.com/store/apps/details?id=at.mikemitterer.nasdaq100" target="_blank">
 				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png">
-			</a>
+			</a><br />
 			Install App
 		</td>
 	</tr>
