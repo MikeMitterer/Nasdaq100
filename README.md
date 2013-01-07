@@ -11,10 +11,14 @@ WebSite + Google Play
 <table border=0 style="border: none">
 	<tr>
 		<td>
-			<a href="#" target="_blank">![Icon](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png)</a>
+			<a href="#" target="_blank">
+				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png">
+			</a>
 		</td>
 		<td>
-			<a href="#" target="_blank">![Google Play](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png)</a>
+			<a href="#" target="_blank">
+				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png">
+			</a>
 		</td>
 	</tr>
 </table>
