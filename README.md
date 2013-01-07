@@ -26,7 +26,7 @@ WebSite + Google Play
 </table>
 
 [www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
-Website is in German only, englisch will come in the next few weeks
+Website is in German only, english will come in the next few weeks
 
 
 Intention / OpenSource
