@@ -26,8 +26,6 @@ WebSite + Google Play
 [www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
 Website is in German only, englisch will come in the next few weeks
 
-![Google Play](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png)
-[Google Play](https://play.google.com/store/apps/details?id=at.mikemitterer.nasdaq100)
 
 Intention / OpenSource
 ======================
