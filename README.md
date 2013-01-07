@@ -11,21 +11,20 @@ WebSite + Google Play
 <table border=0 style="border: none">
 	<tr>
 		<td>
-			<a href="#" target="_blank">
+			<a href="http://www.nasdaq100.at/" target="_blank">
 				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png">
 			</a>
 		</td>
 		<td>
-			<a href="#" target="_blank">
+			<a href="https://play.google.com/store/apps/details?id=at.mikemitterer.nasdaq100" target="_blank">
 				<img src="https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png">
 			</a>
 		</td>
 	</tr>
 </table>
 
-![Icon](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png)
 [www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
-German only, englisch will come in the next few weeks
+Website is in German only, englisch will come in the next few weeks
 
 ![Google Play](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png)
 [Google Play](https://play.google.com/store/apps/details?id=at.mikemitterer.nasdaq100)
