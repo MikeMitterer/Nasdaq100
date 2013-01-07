@@ -8,6 +8,17 @@ Additionaly they can opt to view the company’s chart over the last 3 months
 
 WebSite + Google Play
 ======================
+<table border=0 style="border: none">
+	<tr>
+		<td>
+			<a href="#" target="_blank">![Icon](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png)</a>
+		</td>
+		<td>
+			<a href="#" target="_blank">![Google Play](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/googleplay.png)</a>
+		</td>
+	</tr>
+</table>
+
 ![Icon](https://github.com/MikeMitterer/Nasdaq100/raw/master/doc/images/icon.png)
 [www.nasdaq100.at](http://www.nasdaq100.at/)<br /> 
 German only, englisch will come in the next few weeks
