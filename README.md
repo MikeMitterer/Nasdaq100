@@ -31,7 +31,7 @@ WebSite + Google Play
 	</tr>
 </table>
 
-[www.nasdaq100.at/english/](http://www.nasdaq100.at/)<br /> 
+[www.nasdaq100.at/](http://www.nasdaq100.at/english/)<br /> 
 
 
 Intention / OpenSource
